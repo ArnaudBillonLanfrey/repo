@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codex des Reliques — Suivi ARR → Dawntrail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0F1019;
+  --bg-alt:#141522;
+  --panel:#1B1C2C;
+  --panel-2:#22233686;
+  --line:#2C2D42;
+  --text:#E9E6F2;
+  --text-dim:#9C98B4;
+  --text-faint:#6B6884;
+  --crystal:#5EE6D9;
+  --crystal-dim:#3A9C92;
+  --gold:#E3B34D;
+  --gold-dim:#8A6B2C;
+  --rose:#E2637A;
+  --rose-dim:#7A3540;
+  --radius:10px;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:radial-gradient(ellipse at 20% -10%, #1c1e33 0%, var(--bg) 55%);
+  color:var(--text);
+  font-family:'Manrope',sans-serif;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+.serif{font-family:'Cormorant Garamond',serif;}
+
+/* Layout */
+.app{display:flex;min-height:100vh;}
+.rail{
+  width:280px;flex:0 0 280px;
+  background:var(--bg-alt);
+  border-right:1px solid var(--line);
+  padding:28px 18px 18px;
+  position:sticky;top:0;height:100vh;overflow-y:auto;
+}
+.main{flex:1;min-width:0;padding:34px 40px 80px;max-width:920px;}
+
+/* Brand */
+.brand{padding:0 6px 22px;border-bottom:1px solid var(--line);margin-bottom:18px;}
+.brand .mark{font-size:11px;letter-spacing:.14em;color:var(--crystal);text-transform:uppercase;margin-bottom:6px;}
+.brand h1{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;margin:0 0 4px;line-height:1.15;color:#fff;}
+.brand p{font-size:12.5px;color:var(--text-dim);margin:0;line-height:1.5;}
+
+/* Global ring */
+.global-box{
+  margin:0 6px 20px;padding:16px;border-radius:var(--radius);
+  background:linear-gradient(160deg,#1d2038,#171827);
+  border:1px solid var(--line);
+}
+.global-row{display:flex;align-items:center;gap:14px;}
+.ring{width:56px;height:56px;flex:0 0 56px;}
+.global-num{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--crystal);}
+.global-label{font-size:11px;color:var(--text-dim);line-height:1.3;}
+
+/* Nav list */
+.navlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px;}
+.navlist button{
+  width:100%;text-align:left;border:none;background:transparent;color:var(--text);
+  padding:10px 10px;border-radius:8px;cursor:pointer;display:flex;flex-direction:column;gap:6px;
+  font-family:inherit;
+}
+.navlist button:hover{background:var(--panel);}
+.navlist button.active{background:var(--panel);box-shadow:inset 2px 0 0 var(--crystal);}
+.nav-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+.nav-name{font-size:13.5px;font-weight:600;}
+.nav-ext{font-size:10.5px;color:var(--text-faint);}
+.nav-bar{height:4px;border-radius:3px;background:#2a2b3f;overflow:hidden;}
+.nav-bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--crystal-dim),var(--crystal));}
+.nav-pct{font-size:10.5px;color:var(--text-dim);}
+
+.rail-foot{margin-top:16px;padding:0 6px;}
+.reset-btn{
+  width:100%;font-size:11.5px;color:var(--rose);background:transparent;border:1px solid var(--rose-dim);
+  border-radius:8px;padding:8px;cursor:pointer;font-family:inherit;
+}
+.reset-btn:hover{background:rgba(226,99,122,0.08);}
+.save-indicator{font-size:10.5px;color:var(--text-faint);text-align:center;margin-top:8px;height:14px;}
+
+/* Series header */
+.series-head{margin-bottom:22px;}
+.eyebrow{font-size:11px;color:var(--text-dim);letter-spacing:.03em;margin-bottom:6px;}
+.series-head h2{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;margin:0 0 8px;color:#fff;}
+.series-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--text-dim);margin-bottom:16px;}
+.series-meta b{color:var(--text);font-weight:600;}
+.target-row{
+  display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--line);
+  padding:12px 14px;border-radius:var(--radius);margin-bottom:8px;
+}
+.target-row label{font-size:12.5px;color:var(--text-dim);}
+.target-row input{
+  width:64px;background:var(--bg-alt);border:1px solid var(--line);color:var(--text);
+  border-radius:6px;padding:6px 8px;font-family:inherit;font-size:14px;text-align:center;
+}
+.overall-bar{flex:1;height:8px;border-radius:5px;background:#2a2b3f;overflow:hidden;}
+.overall-bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--crystal-dim),var(--gold));}
+.overall-pct{font-size:12.5px;color:var(--crystal);min-width:40px;text-align:right;}
+
+/* Prereqs */
+.prereqs{
+  background:var(--panel-2);border:1px dashed var(--line);border-radius:var(--radius);
+  padding:14px 16px;margin-bottom:24px;font-size:12.5px;color:var(--text-dim);
+}
+.prereqs .lbl{color:var(--text);font-weight:600;margin-bottom:6px;font-size:12.5px;}
+.prereqs ul{margin:0;padding-left:18px;}
+.prereqs li{margin-bottom:3px;}
+
+/* Timeline */
+.timeline{position:relative;padding-left:26px;}
+.timeline::before{
+  content:'';position:absolute;left:8px;top:6px;bottom:6px;width:1px;
+  background:linear-gradient(to bottom, var(--crystal-dim), var(--line));
+}
+.step{position:relative;margin-bottom:14px;}
+.step-node{
+  position:absolute;left:-26px;top:16px;width:17px;height:17px;border-radius:50%;
+  background:var(--bg-alt);border:2px solid var(--line);
+}
+.step.ok .step-node{border-color:var(--gold);background:var(--gold);}
+.step-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;
+}
+.step-summary{
+  display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;user-select:none;
+}
+.step-summary:hover{background:#1f2032;}
+.step-title{font-size:14.5px;font-weight:600;flex:1;min-width:0;}
+.step-quest{font-size:11.5px;color:var(--text-faint);display:block;margin-top:2px;font-weight:400;}
+.badge{
+  font-size:10.5px;padding:3px 9px;border-radius:20px;white-space:nowrap;flex:0 0 auto;
+  border:1px solid var(--line);color:var(--text-dim);
+}
+.step.ok .badge{border-color:var(--gold-dim);color:var(--gold);background:rgba(227,179,77,0.08);}
+.chevron{color:var(--text-faint);font-size:13px;transition:transform .15s ease;flex:0 0 auto;}
+.step.open .chevron{transform:rotate(90deg);}
+.step-body{display:none;padding:0 16px 16px;border-top:1px solid var(--line);}
+.step.open .step-body{display:block;}
+.instr-list{margin:12px 0 14px;padding-left:18px;font-size:12.5px;color:var(--text-dim);line-height:1.6;}
+.instr-list li{margin-bottom:4px;}
+.instr-list li::marker{color:var(--crystal-dim);}
+
+table.mat{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px;}
+table.mat th{
+  text-align:left;font-size:10.5px;color:var(--text-faint);font-weight:600;
+  padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap;
+}
+table.mat td{padding:8px 8px;border-bottom:1px solid #23243a;vertical-align:middle;}
+table.mat tr:last-child td{border-bottom:none;}
+.mat-name{color:var(--text);font-weight:500;}
+.mat-source{color:var(--text-faint);font-size:11.5px;}
+.mat-num{text-align:right;color:var(--text-dim);white-space:nowrap;}
+.mat-input{
+  width:58px;background:var(--bg-alt);border:1px solid var(--line);color:var(--text);
+  border-radius:6px;padding:5px 6px;font-family:inherit;font-size:12.5px;text-align:right;
+}
+.mat-missing{font-weight:600;}
+.mat-missing.zero{color:var(--gold);}
+.mat-missing.some{color:var(--rose);}
+.step-total{
+  display:flex;justify-content:flex-end;gap:18px;font-size:11.5px;color:var(--text-dim);
+  padding:10px 8px 2px;
+}
+.step-notes{margin-top:10px;font-size:11.5px;color:var(--text-faint);font-style:italic;}
+.step-notes div{margin-bottom:3px;}
+
+/* Mon suivi panel */
+.suivi{
+  margin-top:32px;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 18px 20px;
+}
+.suivi h3{font-family:'Cormorant Garamond',serif;font-size:19px;margin:0 0 4px;color:#fff;font-weight:600;}
+.suivi p.hint{font-size:11.5px;color:var(--text-faint);margin:0 0 14px;}
+.suivi-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.suivi-field{display:flex;flex-direction:column;gap:5px;}
+.suivi-field.full{grid-column:1 / -1;}
+.suivi-field label{font-size:11px;color:var(--text-dim);}
+.suivi-field input,.suivi-field select,.suivi-field textarea{
+  background:var(--bg-alt);border:1px solid var(--line);color:var(--text);
+  border-radius:7px;padding:8px 10px;font-family:inherit;font-size:12.5px;
+}
+.suivi-field textarea{resize:vertical;min-height:60px;}
+
+/* Dashboard (accueil) */
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;}
+.dash-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px;cursor:pointer;transition:border-color .15s;
+}
+.dash-card:hover{border-color:var(--crystal-dim);}
+.dash-card h4{font-family:'Cormorant Garamond',serif;font-size:17px;margin:0 0 3px;color:#fff;font-weight:600;}
+.dash-card .sub{font-size:11px;color:var(--text-faint);margin-bottom:10px;}
+.dash-card .bar{height:6px;border-radius:4px;background:#2a2b3f;overflow:hidden;margin-bottom:6px;}
+.dash-card .bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--crystal-dim),var(--gold));}
+.dash-card .foot{display:flex;justify-content:space-between;font-size:11px;color:var(--text-dim);}
+
+.recap-toggle{
+  margin-top:26px;font-size:12px;color:var(--crystal);cursor:pointer;display:inline-flex;
+  align-items:center;gap:6px;
+}
+.recap-body{display:none;margin-top:12px;}
+.recap-body.open{display:block;}
+.recap-table{width:100%;border-collapse:collapse;font-size:12px;}
+.recap-table th{text-align:left;color:var(--text-faint);font-weight:600;font-size:10.5px;padding:6px 8px;border-bottom:1px solid var(--line);}
+.recap-table td{padding:8px 8px;border-bottom:1px solid #23243a;color:var(--text-dim);}
+.recap-table td.n{color:var(--text);font-weight:500;}
+
+@media(max-width:860px){
+  .app{flex-direction:column;}
+  .rail{position:relative;width:100%;flex:none;height:auto;top:0;}
+  .main{padding:24px 18px 60px;max-width:none;}
+  .dash-grid{grid-template-columns:1fr;}
+  .suivi-grid{grid-template-columns:1fr;}
+}
+:focus-visible{outline:2px solid var(--crystal);outline-offset:2px;}
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="rail" id="rail"></nav>
+  <main class="main" id="main"></main>
+</div>
+<script id="series-data" type="application/json">{"Zodiaque":{"titre":"Zodiac Weapons (ARR — iLvl 135)","cible_defaut":19,"prerequis":["Zodiac Weapons (ARR — iLvl 135)","Nb d'armes/outils ciblés :","Prérequis pour débuter la série"],"etapes":[{"titre":"▶ Étape 1 — Relic (iLvl 80)","quete":"A Relic Reborn","instructions":["• Aller récupérer le contenu d'un coffre et le ramener à Gerolt","• Ramener une arme sertie à Gerolt\n   - Il s'agit d'une arme lv 50☆ qui peut être fabriquée ou achetée à l'hôtel des ventes (HQ non nécessaire)\n   - 2 matérias III doivent être serties dedans (faisable soi-même, en demandant à un autre joueur, ou à un NPC)","• Accomplir le défi La chimère dhorme du Coerthas dans le bon job (porter l'arme est optionnel)","• Accomplir le donjon Le Château d'Amdapor dans le bon job (porter l'arme est optionnel)","• Tuer 3 x 8 ennemis indiqués (dans une zone 48-50) en étant equipé de l'arme inachevée","• Accomplir le défi L'hydre d'Halatali en étant equipé de l'arme inachevée","• Accomplir le défi Le Cratère des tisons (brutal)","• Accomplir le défi Hurlœil (brutal)","• Accomplir le défi Le Nombril (brutal)","• Une fiole d'huile de trempe de Radz-at-Han\n   - Possible d'acheter directement les objets pour la suite"],"materiaux":[{"nom":"Arme HQ de classe (Curtana/Sphairai/...)","source":"HV ou craft","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Matéria III","source":"HV ou matérialisation","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Huile de trempe de Radz-at-Han","source":"15 Allagan Tomestones of Poetics","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19}],"total":[95,0,95],"statut":"En cours"},{"titre":"▶ Étape 2 —  Zenith (iLvl 90)","quete":"∅","instructions":["• Pas de quête, simplement aller au \"Fourneau\" derrière Gerolt et améliorer l'arme avec les lymphes de Thavnair"],"materiaux":[{"nom":"Lymphe de Thavnair","source":"Mor Dhona - Auriana : 20 poétiques l'unité","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57}],"total":[57,0,57],"statut":"En cours"},{"titre":"▶ Étape 3 — Atma (iLvl 100)","quete":"Up in Arms","instructions":[],"materiaux":[{"nom":"Atma du sagittaire","source":"Forêt du nord","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Atma de la vierge","source":"Forêt centrale","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Atma du capricorne","source":"Forêt de l'est","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Atma de la balance","source":"Thanalan central","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Atma du scorpion","source":"Thanalan méridional","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Atma du taureau","source":"Thanalan oriental","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Atma des gémeaux","source":"Thanalan occidental","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Atma du bélier","source":"Noscea centrale","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Atma du verseau","source":"Haute-Noscea","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Atma du lion","source":"Noscea extérieure","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Atma des poissons","source":"Basse-Noscea","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Atma du cancer","source":"Noscea occidentale","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19}],"total":[228,0,228],"statut":"En cours"},{"titre":"▶ Étape 4 — Animus (iLvl 110)","quete":"Trials of the Braves","instructions":["• Il faut acheter 9 livres à G'jusana Mor Dhona 22.9, 7.3 et les compléter.","• Une fois les 9 livres complétés, parler à Jalzahn Forêt du Nord 29.6, 19.6 et choisir \"Renforcer une arme antique âtma\" (penser à déséquipper l'arme)"],"materiaux":[{"nom":"Livre du feu céleste I","source":"Achat 100 Poetics chacun chez Auriana (Mor Dhona)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Livre du feu céleste II","source":"Achat 100 Poetics chacun chez Auriana (Mor Dhona)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Livre du feu infernal I","source":"Achat 100 Poetics chacun chez Auriana (Mor Dhona)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Livre de l'eau céleste I","source":"Achat 100 Poetics chacun chez Auriana (Mor Dhona)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Livre de l'eau céleste II","source":"Achat 100 Poetics chacun chez Auriana (Mor Dhona)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Livre de l'eau infernale I","source":"Achat 100 Poetics chacun chez Auriana (Mor Dhona)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Livre du vent céleste I","source":"Achat 100 Poetics chacun chez Auriana (Mor Dhona)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Livre du vent céleste II","source":"Achat 100 Poetics chacun chez Auriana (Mor Dhona)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Livre de la terre céleste I","source":"Achat 100 Poetics chacun chez Auriana (Mor Dhona)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Validation de chaque livre","source":"FATEs/Levequests/Donjons spécifiques listés par livre","qte_unite":9.0,"total_requis":171,"possede":0.0,"manquant":171}],"total":[342,0,342],"statut":"En cours"},{"titre":"▶ Étape 5 — Novus (iLvl 115)","quete":"Method to His Madness","instructions":["• Acheter un parchemin stellaire à Hubairtin Thanalan Central 23.5 13.7 contre 3 encres enchantées de haute qualité.","• Il faut maintenant transférer des matérias dans le parchemin, 75 fois au total.\n   - Les matérias demandées augmentent en grade plus on augmente la même statistique, des grades I à IV. \n     Par exemple si on veut mettre du critique, on peut mettre des matérias I jusqu'à 11 points de critique, mais après cela demandera des matérias II, et ainsi de suite.\n   - Les chances de transfert diminuent au fur et à mesure des réussites pour chaque palier de matéria. Il est conseillé de faire les transferts au fur et à mesure de l'acquisition des matérias.\n   - Chaque transfert demande une Alexandrite en plus de la matéria. Si le transfert échoue, seule la matéria est perdue, l'Alexandrite est conservée.\n   - Si c'est uniquement pour le skin ou la collection, les stats importent peu, il est possible de prendre les matérias qu'on souhaite (les moins chères, par ex).","• Parler à Jalzahn Forêt du Nord 29.6, 19.6 et choisir \"Renforcer une arme antique animus\" pour donner le parchemin complété avec l'arme et obtenir l'arme novus."],"materiaux":[{"nom":"Encre enchantée de haute qualité","source":"Mor Dhona - Auriana : 25 poétiques l'unité","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Parchemin Stellaire","source":"Hubairtin Thanalan Central 23.5 13.7","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Alexandrite","source":"Carte mystérieuse (5 Alexandrite) Mor Dhona - Auriana","qte_unite":75.0,"total_requis":1425,"possede":0.0,"manquant":1425},{"nom":"Materia VI (75 successful melds)","source":"Materia overmeld successful pour focus stats","qte_unite":75.0,"total_requis":1425,"possede":0.0,"manquant":1425}],"total":[2926,0,2926],"statut":"En cours","notes_materiaux":["Grande compagnie : 50 insignes alliés l'unité","Échange de bons procédés"]},{"titre":"▶ Étape 6 — Nexus (iLvl 115 with Light)","quete":"Beckoning Light (2 000 unités de Light)","instructions":["• Il faut maintenant farmer la lueur/lumière de l'arme, ce qu'on appelle les \"lights\" :\n   - Il faut en tout 2000 points de lights. Ces points ne sont pas indiqués en jeu, on a à la place des textes qu'on peut faire correspondre.\n\n   - Tous les contenus niveau 50 (donjons, raids, défis, aléas, etc..) donnent un \"éclat\" qui fait progresser le nombre de lights de l'arme.\n   - Il faut avoir l'arme équipée\n   - Certains contenus peuvent être améliorés pendant une fenêtre de 2h où leur éclat sera doublé, sur un rythme de rotations. (Surveiller la recherche d'équipe, il y a parfois des groupes de farm)","• Une fois les 2000 points atteints, parler à Jalzahn et choisir \"Renforcer une arme antique novus\" pour obtenir l'arme nexus (penser à déséquipper l'arme)."],"materiaux":[{"nom":"Light farming (2 000 unités)","source":"Donjons (Snowcloak HM = ~brilliant light), Trials, FATEs, raids — équipé","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19}],"total":[19,0,19],"statut":"En cours"},{"titre":"▶ Étape 7 —  Zodiaque (iLvl 125)","quete":"La liberté a un prix - Papana Mor Dhona 23, 7","instructions":["• Pour cette étape il y a 4 quêtes à accomplir qui peuvent être réalisées en simultané.\n   - Cette étape demande beaucoup d'objets récupérables de différentes manière. Il est possible de récupérer ou d'acheter ces objets en avance.\n   - Les donjons demandés peuvent être accomplis dans n'importe quelle classe.","• Livrer une Résine allagoise","• Accomplir le donjon Le Val d'Aurum","• Accomplir le donjon Le Manoir des Haukke (brutal)","• Livrer les objets obtenus en donjons à Guiding Star","• Accomplir le donjon Les Vestiges de la cité d'Amdapor","• Accomplir le donjon Sastasha (brutal)","• Livrer les objets obtenus en donjons à Guiding Star","• Livrer 2 objets HQ :","• Livrer deux objets :","• Accomplir le donjon Le Palais du Vagabond puis livrer l'objet obtenu","• Accomplir le donjon Les Mines de Clochecuivre (brutal) puis livrer l'objet obtenu","• Accomplir le donjon L'Île de Crèvecarène puis livrer l'objet obtenu","• Accomplir le donjon Le Temple enseveli de Qarn (brutal) puis livrer l'objet obtenu","• Livrer 2 objets HQ :","• Livrer 3 objets :","• Livrer 3 objets :","• Parler à Ealdwine Noscea occidentale 34.4, 32.5","• Accomplir le donjon Le Château d'Amdapor","• Accomplir le donjon Le Phare de Sirius","• Accomplir le donjon L'Hypogée de Tam-Tara (brutal)","• Livrer les objets obtenus en donjon","• Accomplir le donjon Le Vigile de Pierre (brutal)","• Livrer l'objet obtenu en donjon","• Livrer deux objets HQ :","• Livrer 3 objets :","• Accomplir le donjon La Forteresse de Dzemael","• Accomplir le donjon Le Bivouac de Brayflox (brutal)","• Livrer les objets obtenus en donjon","• Accomplir le donjon Halatali (brutal)","• Livrer l'objet obtenu en donjon","• Livrer deux objets HQ :","• Une fois les 4 quêtes terminées et donc les 4 objets récupérés, parler à Jalzahn Forêt du Nord 29.6, 19.6 et choisir \"Forger une arme du zodiaque\" pour obtenir l'arme du zodiaque (penser à déséquipper l'arme)."],"materiaux":[{"nom":"Résine allagoise","source":"Quincaillière Thanalan méridional 15.9, 29.0 : 100 000 gils","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Mortier parfait","source":"Fabrication Armurier 50★★★ (recette experte I) - ou Tableau des ventes","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Pilon parfait","source":"Fabrication Forgeron 50★★★ (recette experte I) - ou Tableau des ventes","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Noyau de grand monstre explosif","source":"20 000 sceaux de compagnie","qte_unite":4.0,"total_requis":76,"possede":0.0,"manquant":76},{"nom":"Eau de montagne sacrée","source":"Mor Dhona - Auriana : 200 poétiques l'unité","qte_unite":4.0,"total_requis":76,"possede":0.0,"manquant":76},{"nom":"Parchemin parfait","source":"Fabrication Tanneur 50★★★ (recette experte I) - ou Tableau des ventes","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Fixateur parfait","source":"Fabrication Alchimiste 50★★★ (recette experte I) - ou Tableau des ventes","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Sable de halonite","source":"Quincaillier Hautes terres du Coerthas central 13.2, 15.9 : 100 000 gils","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Bouilloire en laiton","source":"Quincaillier Forêt Du Nord 29.9, 18.9 : 100 000 gils","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Tarte à l'anguille très spéciale","source":"Fabrication Cuisinier 50★★★ (recette experte I) - ou Tableau des ventes","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Étoffe antique parfaite","source":"Fabrication Couturier 50★★★ (recette experte I) - ou Tableau des ventes","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Cristal d'airain","source":"Bazardeur Haute-Noscea 26.1, 26.4 : 100 000 gils","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Bague du feu","source":"Fabrication Orfèvre 50★★★ (recette experte I) - ou Tableau des ventes","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Bûches parfaites","source":"Fabrication Menuisier 50★★★ (recette experte I) - ou Tableau des ventes","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19}],"total":[380,0,380],"statut":"En cours"},{"titre":"▶ Étape 8 — Zeta (iLvl 135) — étape finale","quete":"Born Again Anima → Mahatma → Zeta","instructions":["• Récupérer et compléter 12 mahatmas :\n- Parler à Remon pour acheter un mahatma à  50 poétiques et le fixer à l'arme.\n- Farmer 40 \"lights\" pour compléter le mahatma (même mécanique que l'étape Nexus)\n- Recommencer jusqu'à faire les 12. L'ordre est imposé et le suivi est disponible au NPC, on ne peut pas se tromper.","• Une fois les 12 mahatmas terminés, parler à Jalzahn et choisir \"Réveiller la conscience d'une arme du Zodiaque\" (pensez à déséquipper l'arme).","• Plus ancienne série, énormément simplifiée au fil des patchs.","• Au level cap actuel, vous pouvez courir tous les trials/donjons unsync : énorme gain de temps.","• Light farming devenu rapide via Crystal Tower runs ou trials Heavensward unsync."],"materiaux":[{"nom":"Mahatma du sagittaire","source":"Achat 50 Poetics chacun chez Drake (Mor Dhona) — puis 3 conditions par Mahatma","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Mahatma de la vierge","source":"Achat 50 Poetics chacun chez Drake (Mor Dhona) — puis 3 conditions par Mahatma","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Mahatmadu capricorne","source":"Achat 50 Poetics chacun chez Drake (Mor Dhona) — puis 3 conditions par Mahatma","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Mahatma de la balance","source":"Achat 50 Poetics chacun chez Drake (Mor Dhona) — puis 3 conditions par Mahatma","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Mahatma du scorpion","source":"Achat 50 Poetics chacun chez Drake (Mor Dhona) — puis 3 conditions par Mahatma","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Mahatma du taureau","source":"Achat 50 Poetics chacun chez Drake (Mor Dhona) — puis 3 conditions par Mahatma","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Mahatma des gémeaux","source":"Achat 50 Poetics chacun chez Drake (Mor Dhona) — puis 3 conditions par Mahatma","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Mahatma du bélier","source":"Achat 50 Poetics chacun chez Drake (Mor Dhona) — puis 3 conditions par Mahatma","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Mahatma du verseau","source":"Achat 50 Poetics chacun chez Drake (Mor Dhona) — puis 3 conditions par Mahatma","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Mahatma du lion","source":"Achat 50 Poetics chacun chez Drake (Mor Dhona) — puis 3 conditions par Mahatma","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Mahatma des poissons","source":"Achat 50 Poetics chacun chez Drake (Mor Dhona) — puis 3 conditions par Mahatma","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Mahatma du cancer","source":"Achat 50 Poetics chacun chez Drake (Mor Dhona) — puis 3 conditions par Mahatma","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Validation de chaque Mahatma","source":"Donjons/FATEs Heavensward sync ou conditions ARR","qte_unite":12.0,"total_requis":228,"possede":0.0,"manquant":228}],"total":[456,0,456],"statut":"En cours"}],"colonnes_materiaux":["Matériau / Objet","Source","Qté / unité","Total requis","Possédé","Manquant"]},"Anima":{"titre":"Anima Weapons (Heavensward — iLvl 275)","cible_defaut":19,"prerequis":["Anima Weapons (Heavensward — iLvl 275)","Nb d'armes/outils ciblés :","Prérequis pour débuter la série"],"etapes":[{"titre":"▶ Étape 1 — Animated Weapon (iLvl 200)","quete":"Soul Without Life","instructions":[],"materiaux":[{"nom":"Unidentifiable Bone","source":"Achat 50 Poetics chacun (Auriana, Mor Dhona)","qte_unite":4.0,"total_requis":76,"possede":0.0,"manquant":76},{"nom":"Unidentifiable Shell","source":"Achat 50 Poetics chacun (Auriana)","qte_unite":4.0,"total_requis":76,"possede":0.0,"manquant":76},{"nom":"Unidentifiable Ore","source":"Achat 50 Poetics chacun (Auriana)","qte_unite":4.0,"total_requis":76,"possede":0.0,"manquant":76},{"nom":"Unidentifiable Seeds","source":"Achat 50 Poetics chacun (Auriana)","qte_unite":4.0,"total_requis":76,"possede":0.0,"manquant":76},{"nom":"Allagan Tomestones of Poetics (total)","source":"Roulettes, raids, contenu endgame","qte_unite":800.0,"total_requis":15200,"possede":0.0,"manquant":15200}],"total":[15504,0,15504],"statut":"En cours"},{"titre":"▶ Étape 2 — Awoken Weapon (iLvl 210)","quete":"Toughening Up","instructions":[],"materiaux":[{"nom":"Adamantite Francesca","source":"Trial Akh Afah Amphitheatre (Extreme)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Kingcake","source":"Trial Thok ast Thok (Extreme)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Vrandtic Visionary's Ear","source":"Trial Limitless Blue (Extreme)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Aurum Vale (clear)","source":"Donjon Aurum Vale sync ou unsync","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Brayflox's Longstop Hard (clear)","source":"Donjon Brayflox HM sync ou unsync","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Halatali Hard (clear)","source":"Donjon Halatali HM","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Lost City of Amdapor (clear)","source":"Donjon Lost City","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19}],"total":[133,0,133],"statut":"En cours"},{"titre":"▶ Étape 3 — Anima Weapon (iLvl 230)","quete":"Coming into Its Own","instructions":[],"materiaux":[{"nom":"Crystal Sand","source":"Craft (DoH) ou marketboard","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Aether Oil","source":"Drop Trials EX Heavensward + donjons","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57}],"total":[114,0,114],"statut":"En cours"},{"titre":"▶ Étape 4 — Hyperconductive Anima (iLvl 240)","quete":"Finding Your Voice — Mahatmas","instructions":[],"materiaux":[{"nom":"Mahatma (12 différents)","source":"Drop FATEs gold zones Heavensward (Coerthas WH, Sea of Clouds, Dravanian Forelands/Hinterlands, Churning Mists, Azys Lla)","qte_unite":12.0,"total_requis":228,"possede":0.0,"manquant":228}],"total":[228,0,228],"statut":"En cours"},{"titre":"▶ Étape 5 — Reconditioned Anima (iLvl 250)","quete":"Best of Friends","instructions":[],"materiaux":[{"nom":"Umbrite","source":"Achat 7 Poetics chacun chez Auriana","qte_unite":60.0,"total_requis":1140,"possede":0.0,"manquant":1140},{"nom":"Crystal Sand","source":"Craft DoH (HQ matériaux HW) ou marketboard","qte_unite":60.0,"total_requis":1140,"possede":0.0,"manquant":1140}],"total":[2280,0,2280],"statut":"En cours"},{"titre":"▶ Étape 6 — Sharpened Anima (iLvl 260)","quete":"A Dream Fulfilled — Light farming","instructions":[],"materiaux":[{"nom":"Pneumite","source":"Achat 150 Poetics chacun chez Auriana","qte_unite":8.0,"total_requis":152,"possede":0.0,"manquant":152},{"nom":"Light (Sharpened amount)","source":"Farming donjons/FATEs/trials Heavensward (équipé)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19}],"total":[171,0,171],"statut":"En cours"},{"titre":"▶ Étape 7 — Complete Anima (iLvl 270)","quete":"The Resonant","instructions":[],"materiaux":[{"nom":"Singing Cluster","source":"Drop donjons Heavensward (sync)","qte_unite":15.0,"total_requis":285,"possede":0.0,"manquant":285}],"total":[285,0,285],"statut":"En cours"},{"titre":"▶ Étape 8 — Lux Anima (iLvl 275) — étape finale","quete":"Body and Soul","instructions":["• L'étape Mahatma est la plus chronophage (12 × ~40 FATEs gold).","• Light farming trivialisable via Aetherochemical Research Facility (donjon HW) unsync.","• Best of Friends a un taux d'échec : prévoyez 70-80 Umbrite/Crystal Sand par sécurité.","• Au level cap actuel, trials EX HW se font en solo unsync très rapidement."],"materiaux":[{"nom":"Archaic Enchanted Ink","source":"Trials EX Sephirot / Sophia / Zurvan","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Singing Cluster","source":"Drop donjons Heavensward","qte_unite":50.0,"total_requis":950,"possede":0.0,"manquant":950},{"nom":"Coelacanth, Birch Sap, etc.","source":"Récolte spéciale (Botaniste/Mineur HQ)","qte_unite":6.0,"total_requis":114,"possede":0.0,"manquant":114}],"total":[1083,0,1083],"statut":"En cours"}],"colonnes_materiaux":["Matériau / Objet","Source","Qté / unité","Total requis","Possédé","Manquant"]},"Eureka":{"titre":"Eureka Weapons (Stormblood — iLvl 405)","cible_defaut":19,"prerequis":["Eureka Weapons (Stormblood — iLvl 405)","Nb d'armes/outils ciblés :","Prérequis pour débuter la série"],"etapes":[{"titre":"▶ Étape 1 — Antiquated Weapon (iLvl 290) — base","quete":"Achat dans Eureka Anemos","instructions":[],"materiaux":[{"nom":"Antiquated Weapon de classe","source":"Achat chez Gerolt à Port Surgate (Anemos) avec gil","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19}],"total":[19,0,19],"statut":"En cours"},{"titre":"▶ Étape 2 — Anemos Weapon (iLvl 335)","quete":"And We Shall Call It Anemos","instructions":[],"materiaux":[{"nom":"Protean Crystal","source":"Drop ennemis Eureka Anemos (chain bonus important)","qte_unite":100.0,"total_requis":1900,"possede":0.0,"manquant":1900},{"nom":"Anemos Crystal","source":"Drop NM (Notorious Monsters) Anemos","qte_unite":5.0,"total_requis":95,"possede":0.0,"manquant":95},{"nom":"Pazuzu's Feather","source":"NM Pazuzu (rare spawn, Elemental Level 27+)","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57}],"total":[2052,0,2052],"statut":"En cours"},{"titre":"▶ Étape 3 — Elemental Weapon (iLvl 350)","quete":"Eureka Pagos","instructions":[],"materiaux":[{"nom":"Pazuzu's Feather","source":"NM Pazuzu Anemos","qte_unite":5.0,"total_requis":95,"possede":0.0,"manquant":95},{"nom":"Frosted Protean Crystal","source":"Drop ennemis Pagos","qte_unite":30.0,"total_requis":570,"possede":0.0,"manquant":570},{"nom":"Louhi's Ice","source":"NM Louhi à Pagos","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57}],"total":[722,0,722],"statut":"En cours"},{"titre":"▶ Étape 4 — Elemental +1 / +2 (iLvl 360 / 370)","quete":"Améliorations Pagos","instructions":[],"materiaux":[{"nom":"Frosted Protean Crystal","source":"Drop ennemis Pagos (chain + NM)","qte_unite":200.0,"total_requis":3800,"possede":0.0,"manquant":3800},{"nom":"Pagos Crystal","source":"Drop NM Pagos","qte_unite":20.0,"total_requis":380,"possede":0.0,"manquant":380}],"total":[4180,0,4180],"statut":"En cours"},{"titre":"▶ Étape 5 — Pyros Weapon (iLvl 375)","quete":"Eureka Pyros","instructions":[],"materiaux":[{"nom":"Penthesilea's Flame","source":"NM Penthesilea (Pyros)","qte_unite":5.0,"total_requis":95,"possede":0.0,"manquant":95},{"nom":"Pyros Crystal","source":"NM Pyros","qte_unite":20.0,"total_requis":380,"possede":0.0,"manquant":380}],"total":[475,0,475],"statut":"En cours"},{"titre":"▶ Étape 6 — Hydatos Weapon (iLvl 385)","quete":"Eureka Hydatos","instructions":[],"materiaux":[{"nom":"Hydatos Crystal","source":"Drop ennemis & NM Hydatos","qte_unite":25.0,"total_requis":475,"possede":0.0,"manquant":475},{"nom":"Crystalline Scale","source":"Drop Crystal Dragon (NM Hydatos)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19}],"total":[494,0,494],"statut":"En cours"},{"titre":"▶ Étape 7 — Eureka Weapon (iLvl 395)","quete":"Eureka complétion","instructions":[],"materiaux":[{"nom":"Crystalline Scale","source":"Crystal Dragon Hydatos","qte_unite":5.0,"total_requis":95,"possede":0.0,"manquant":95}],"total":[95,0,95],"statut":"En cours"},{"titre":"▶ Étape 8 — Physeos Weapon (iLvl 405) — étape finale","quete":"Baldesion Arsenal (BA) — clears + Ozma","instructions":["• Zone instanciée à 4 maps (Anemos, Pagos, Pyros, Hydatos) avec Elemental Level 1-60.","• Farm très basé sur le chain killing : rejoignez des groupes pour le rendement maximal.","• Les NM trains sont organisés via Discords dédiés (NA/EU) — quasi obligatoire pour le drop NM.","• Baldesion Arsenal est un raid 56 joueurs très difficile (groupes Discord, scheduling).","• Quantités Protean/Frosted Crystals approximatives : varient selon stratégie de chain."],"materiaux":[{"nom":"Eureka Fragment","source":"Drop Baldesion Arsenal (raid 56 players)","qte_unite":100.0,"total_requis":1900,"possede":0.0,"manquant":1900}],"total":[1900,0,1900],"statut":"En cours"}],"colonnes_materiaux":["Matériau / Objet","Source","Qté / unité","Total requis","Possédé","Manquant"]},"Resistance":{"titre":"Resistance Weapons (Shadowbringers — iLvl 535)","cible_defaut":19,"prerequis":["Resistance Weapons (Shadowbringers — iLvl 535)","Nb d'armes/outils ciblés :","Prérequis pour débuter la série"],"etapes":[{"titre":"▶ Étape 1 — Resistance Weapon (iLvl 485)","quete":"Resistance Is (Not) Futile","instructions":[],"materiaux":[{"nom":"Thavnairian Scalepowder","source":"Achat 250 Poetics chacun (Auriana Mor Dhona, Hismena Idyllshire)","qte_unite":4.0,"total_requis":76,"possede":0.0,"manquant":76},{"nom":"Allagan Tomestones of Poetics (total)","source":"Roulettes, raids","qte_unite":1000.0,"total_requis":19000,"possede":0.0,"manquant":19000}],"total":[19076,0,19076],"statut":"En cours"},{"titre":"▶ Étape 2 — Augmented Resistance (iLvl 490)","quete":"For Want of a Memory (répétable, Zlatan à Gangos)","instructions":[],"materiaux":[{"nom":"Tortured Memory of the Dying","source":"FATEs gold Coerthas WH / Sea of Clouds OU Skirmishes sud Bozja","qte_unite":20.0,"total_requis":380,"possede":0.0,"manquant":380},{"nom":"Sorrowful Memory of the Dying","source":"FATEs gold Dravanian Forelands / Churning Mists OU Skirmishes centre Bozja","qte_unite":20.0,"total_requis":380,"possede":0.0,"manquant":380},{"nom":"Harrowing Memory of the Dying","source":"FATEs gold Dravanian Hinterlands / Azys Lla OU Skirmishes nord Bozja","qte_unite":20.0,"total_requis":380,"possede":0.0,"manquant":380}],"total":[1140,0,1140],"statut":"En cours"},{"titre":"▶ Étape 3 — Recollection (iLvl 500)","quete":"The Will to Resist (one-time pour la 1ère arme)","instructions":[],"materiaux":[{"nom":"Bitter Memory of the Dying","source":"Donjons lvl 60 sync, Bozja kills, Leveling Roulette (1/jour)","qte_unite":6.0,"total_requis":114,"possede":0.0,"manquant":114}],"total":[114,0,114],"statut":"En cours"},{"titre":"▶ Étape 4 — Law's Order (iLvl 510)","quete":"Change of Arms (répétable). Prérequis : Resistance Rank 10 + Castrum Lacus Litore + Delubrum Reginae","instructions":[],"materiaux":[{"nom":"Loathsome Memory of the Dying","source":"Crystal Tower (Labyrinth/Syrcus/WoD) sync, Delubrum Reginae, CE Bozja","qte_unite":15.0,"total_requis":285,"possede":0.0,"manquant":285}],"total":[285,0,285],"statut":"En cours"},{"titre":"▶ Étape 5 — Augmented Law's Order (iLvl 515)","quete":"The Resistance Remembers (one-time pour la 1ère arme)","instructions":[],"materiaux":[{"nom":"Haunting Memory of the Dying","source":"Alliance raids ShB (NieR : Copied Factory / Puppets' Bunker / Tower at Paradigm's Breach) ; FATEs gold zones Stormblood","qte_unite":18.0,"total_requis":342,"possede":0.0,"manquant":342},{"nom":"Vexatious Memory of the Dying","source":"Alliance raids HW (Void Ark / Weeping City / Dun Scaith) ; FATEs gold zones Stormblood","qte_unite":18.0,"total_requis":342,"possede":0.0,"manquant":342}],"total":[684,0,684],"statut":"En cours"},{"titre":"▶ Étape 6 — Blade's (iLvl 525)","quete":"A New Path of Resistance (répétable). Prérequis : Zadnor débloqué","instructions":[],"materiaux":[{"nom":"Timeworn Artifact","source":"Palace of the Dead floors 51+, Delubrum Reginae, Dalriada, donjons lvl 70 sync","qte_unite":15.0,"total_requis":285,"possede":0.0,"manquant":285}],"total":[285,0,285],"statut":"En cours"},{"titre":"▶ Étape 7 — Augmented Blade's (iLvl 535) — préparation Zadnor","quete":"What Dreams Are Made Of (Spare Parts / Tell Me a Story / A Fond Memory) (one-time pour la 1ère arme)","instructions":[],"materiaux":[{"nom":"Compact Axle","source":"Skirmishes sud Zadnor (1x) ; Alexander Normal A1/A4/A5/A8 sync","qte_unite":30.0,"total_requis":570,"possede":0.0,"manquant":570},{"nom":"Compact Spring","source":"Critical Engagements sud Zadnor (2x) ; Alexander A2/A3/A6/A7 sync","qte_unite":30.0,"total_requis":570,"possede":0.0,"manquant":570},{"nom":"Battle for the Realm (Day in the Life)","source":"Skirmishes ouest Zadnor (1x) ; Omega Normal sync","qte_unite":30.0,"total_requis":570,"possede":0.0,"manquant":570},{"nom":"Beyond the Rift (Day in the Life)","source":"Critical Engagements ouest Zadnor (2x) ; Omega Normal sync","qte_unite":30.0,"total_requis":570,"possede":0.0,"manquant":570},{"nom":"Bleak Memory of the Dying","source":"Skirmishes nord Zadnor (1x) ; Eden Normal sync","qte_unite":30.0,"total_requis":570,"possede":0.0,"manquant":570},{"nom":"Lurid Memory of the Dying","source":"Critical Engagements nord Zadnor (2x) ; Eden Normal sync","qte_unite":30.0,"total_requis":570,"possede":0.0,"manquant":570}],"total":[3420,0,3420],"statut":"En cours"},{"titre":"▶ Étape 8 — Resistance Blade's (iLvl 535) — étape finale","quete":"Irresistible (répétable)","instructions":["• Pour les armes après la 1ère : skip étape 3 (Bitter), étape 5 (Haunting/Vexatious) et étape 7 (Zadnor).","• Une arme additionnelle = 4 Scalepowder + 60 Memories (1ère phase) + 15 Loathsome + 15 Timeworn + 15 Raw Emotion.","• Resistance Rank requis : 10 pour étape 4, 25 pour terminer la série.","• FATEs Heavensward gold = drop 100% (méthode la plus rapide pour Memories of the Dying).","• Alliance raids = drop garanti par clear (mais queues longues hors current content) — Party Finder est plus efficace."],"materiaux":[{"nom":"Raw Emotion","source":"Heaven on High floor sets 51+, Delubrum Reginae, Dalriada, donjons lvl 70 sync","qte_unite":15.0,"total_requis":285,"possede":0.0,"manquant":285}],"total":[285,0,285],"statut":"En cours"}],"colonnes_materiaux":["Matériau / Objet","Source","Qté / unité","Total requis","Possédé","Manquant"]},"Manderville":{"titre":"Manderville Weapons (Endwalker — iLvl 665)","cible_defaut":19,"prerequis":["Manderville Weapons (Endwalker — iLvl 665)","Nb d'armes/outils ciblés :","Prérequis pour débuter la série"],"etapes":[{"titre":"▶ Étape 1 — Manderville Weapon (iLvl 615)","quete":"Make It a Manderville / Make Another Manderville (répétable)","instructions":[],"materiaux":[{"nom":"Manderium Meteorite","source":"Achat chez Jubrunnah (Radz-at-Han 12.2,10.9) — 500 Poetics chacun","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Allagan Tomestones of Poetics (total)","source":"Roulettes, raids, Frontline, Mentor Roulette","qte_unite":1500.0,"total_requis":28500,"possede":0.0,"manquant":28500}],"total":[28557,0,28557],"statut":"En cours"},{"titre":"▶ Étape 2 — Amazing Manderville Weapon (iLvl 630)","quete":"Well-oiled / The Next Mander-level (répétable). Prérequis : 'Generational Bonding'","instructions":[],"materiaux":[{"nom":"Complementary Chondrite","source":"Achat chez Jubrunnah — 500 Poetics chacun","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Allagan Tomestones of Poetics (total)","source":"Roulettes, raids","qte_unite":1500.0,"total_requis":28500,"possede":0.0,"manquant":28500}],"total":[28557,0,28557],"statut":"En cours"},{"titre":"▶ Étape 3 — Majestic Manderville Weapon (iLvl 645)","quete":"A Spirit Reforging / In Need of Adjustment (répétable)","instructions":[],"materiaux":[{"nom":"Amplifying Achondrite","source":"Achat chez Jubrunnah — 500 Poetics chacun","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Allagan Tomestones of Poetics (total)","source":"Roulettes, raids","qte_unite":1500.0,"total_requis":28500,"possede":0.0,"manquant":28500}],"total":[28557,0,28557],"statut":"En cours"},{"titre":"▶ Étape 4 — Mandervillous Weapon (iLvl 665) — étape finale","quete":"Resonating with Perfection / Positively Mandervillous (répétable)","instructions":["• Série de loin la plus simple : 100% basée sur Poetics.","• Coût total par arme finale : 6 000 Poetics (1500 × 4 étapes).","• Pour les 19 armes finales : 114 000 Poetics au total.","• Stock Poetics plafonné à 2 000 — dépensez régulièrement.","• Sources rapides de Poetics : Frontline Roulette (~250 + bonus), Alliance Raid Roulette, Daily Trials, Leveling Roulette."],"materiaux":[{"nom":"Cosmic Crystallite","source":"Achat chez Jubrunnah — 500 Poetics chacun","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Allagan Tomestones of Poetics (total)","source":"Roulettes, raids","qte_unite":1500.0,"total_requis":28500,"possede":0.0,"manquant":28500}],"total":[28557,0,28557],"statut":"En cours"}],"colonnes_materiaux":["Matériau / Objet","Source","Qté / unité","Total requis","Possédé","Manquant"]},"Fantôme":{"titre":"Phantom Weapons (Dawntrail — iLvl 745+, en cours d'extension)","cible_defaut":19,"prerequis":["Phantom Weapons (Dawntrail — iLvl 745+, en cours d'extension)","Nb d'armes/outils ciblés :","Prérequis pour débuter la série"],"etapes":[{"titre":"▶ Étape 1a — Récolte des Demiatma (1ère arme uniquement)","quete":"Arcane Artistry (one-time, pour la 1ère arme)","instructions":[],"materiaux":[{"nom":"Verdigris Demiatma","source":"FATEs Kozama'uka (5%) OU CE sud-ouest South Horn (20%)","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Azurite Demiatma","source":"FATEs Urqopacha (5%) OU CE sud-est South Horn (20%)","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Malachite Demiatma","source":"FATEs Yak T'el (5%) OU CE grottes ouest South Horn (20%)","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Realgar Demiatma","source":"FATEs Shaaloani (5%) OU CE plages nord-ouest South Horn (20%)","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Caput Mortuum Demiatma","source":"FATEs Heritage Found (5%) OU CE citadelle est South Horn (20%)","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Orpiment Demiatma","source":"FATEs Living Memory (5%) OU CE plaines centrales South Horn (20%)","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57}],"total":[342,0,342],"statut":"En cours"},{"titre":"▶ Étape 1b — Phantom Weapon Penumbrae (iLvl 745)","quete":"Forging the Phantasmal (1ère) / Achat répétable chez Dodokkuli (Phantom Village 6.7,7.1)","instructions":[],"materiaux":[{"nom":"Arcanite","source":"Achat 500 Tomestones of Mathematics chacun chez Ermina (Phantom Village 6.9,7.3)","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Allagan Tomestones of Mathematics (total)","source":"Roulettes lvl 100, raids Arcadion, contenu endgame","qte_unite":1500.0,"total_requis":28500,"possede":0.0,"manquant":28500}],"total":[28557,0,28557],"statut":"En cours"},{"titre":"▶ Étape 2 — Keeping the Old Ways Alive (one-time)","quete":"Keeping the Old Ways Alive (one-time, pour la 1ère arme uniquement)","instructions":[],"materiaux":[{"nom":"Rroneek Glue","source":"Achat chez Goplu (Tuliyollal 13.1,12.7) — 300 000 gil","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Ut'ohmu Siderite","source":"Achat chez Rral Wuruq (Yak T'el 13.8,12.7) — 600 Gemstones OU marketboard","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Umbral Clay","source":"Achat chez Goplu (Tuliyollal) — gil","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Synthetic Dark Matter α","source":"Craft DoH 100★★★ (BSM/ARM/GSM, Master Recipes XII) OU marketboard","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Synthetic Dark Matter β","source":"Craft DoH 100★★★ (CRP/LTW/WVR, Master Recipes XII) OU marketboard","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19}],"total":[95,0,95],"statut":"En cours"},{"titre":"▶ Étape 3 — Aether, Aether, Everywhere (one-time)","quete":"Aether, Aether, Everywhere (one-time, pour la 1ère arme uniquement)","instructions":[],"materiaux":[{"nom":"Aether vert","source":"Roulette High-Level Dungeons","qte_unite":10000.0,"total_requis":190000,"possede":0.0,"manquant":190000},{"nom":"Aether bleu","source":"Roulette Trials","qte_unite":10000.0,"total_requis":190000,"possede":0.0,"manquant":190000},{"nom":"Aether rouge","source":"Roulette Normal Raids","qte_unite":10000.0,"total_requis":190000,"possede":0.0,"manquant":190000},{"nom":"Aether jaune","source":"Roulette Alliance Raids","qte_unite":10000.0,"total_requis":190000,"possede":0.0,"manquant":190000}],"total":[760000,0,760000],"statut":"En cours"},{"titre":"▶ Étape 4 — Phantom Weapon Umbrae (iLvl ~755)","quete":"Wrought by Hands Phantasmal (1ère) / Achat répétable chez Dodokkuli","instructions":[],"materiaux":[{"nom":"Waxing Arcanite","source":"Achat 500 Mathematics chacun chez Ermina (Phantom Village)","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Allagan Tomestones of Mathematics (total)","source":"Roulettes lvl 100, raids Arcadion","qte_unite":1500.0,"total_requis":28500,"possede":0.0,"manquant":28500}],"total":[28557,0,28557],"statut":"En cours"},{"titre":"▶ Étape 5 — Timeworn Techniques (Patch 7.41, one-time)","quete":"Timeworn Techniques (one-time, pour la 1ère arme uniquement)","instructions":[],"materiaux":[{"nom":"Umbral Clay","source":"Achat chez Tuliyollal — 500 000 gil","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Phantom Glass","source":"Donné automatiquement par la quête (key item)","qte_unite":1.0,"total_requis":19,"possede":0.0,"manquant":19},{"nom":"Autres matériaux (TBD)","source":"Voir Phantom Glass in-game pour la liste exacte","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57}],"total":[95,0,95],"statut":"En cours"},{"titre":"▶ Étape 6 — In Pursuit of Perfection (Crystal Paste, one-time)","quete":"In Pursuit of Perfection (one-time, pour la 1ère arme uniquement)","instructions":[],"materiaux":[{"nom":"Crystal Paste (4 paliers : 100 → 200 → 300 → 600)","source":"Voir sources détaillées ci-dessous","qte_unite":1200.0,"total_requis":22800,"possede":0.0,"manquant":22800},{"nom":"CP via Critical Encounters Occult Crescent","source":"5 CP par CE — par unité, pas par CE","qte_unite":5.0,"total_requis":95,"possede":0.0,"manquant":95},{"nom":"CP via Expert Roulette","source":"15 CP par clear (sans bonus quotidien requis)","qte_unite":15.0,"total_requis":285,"possede":0.0,"manquant":285},{"nom":"CP via Level Cap Dungeons Roulette","source":"15 CP par clear","qte_unite":15.0,"total_requis":285,"possede":0.0,"manquant":285},{"nom":"CP via Leveling Roulette","source":"20 CP par clear (le plus rentable, pas besoin d'être lvl 100)","qte_unite":20.0,"total_requis":380,"possede":0.0,"manquant":380},{"nom":"CP via Normal Raids Arcadion (Heavyweight)","source":"8 CP par clear normal","qte_unite":8.0,"total_requis":152,"possede":0.0,"manquant":152},{"nom":"CP via Savage Arcadion","source":"10-18 CP par clear selon palier","qte_unite":14.0,"total_requis":266,"possede":0.0,"manquant":266},{"nom":"CP via Current Extreme (Hell on Rails)","source":"9 CP par clear","qte_unite":9.0,"total_requis":171,"possede":0.0,"manquant":171},{"nom":"CP via Variant Dungeon The Merchant's Tale","source":"14 CP par clear (patch 7.45)","qte_unite":14.0,"total_requis":266,"possede":0.0,"manquant":266},{"nom":"CP via Pilgrim's Traverse","source":"10+ par floorset, plus haut = plus de CP","qte_unite":10.0,"total_requis":190,"possede":0.0,"manquant":190}],"total":[24890,0,24890],"statut":"En cours"},{"titre":"▶ Étape 7 — A Phantom Reborn (étape finale actuelle)","quete":"A Phantom Reborn (1ère) / Achat répétable de Waning Arcanite chez Dodokkuli","instructions":["• Série liée à Occult Crescent (similaire à Eureka/Bozja).","• Pour chaque arme additionnelle après la 1ère : vous skippez les étapes one-time (1a, 2, 3, 5, 6) et payez seulement les Tomestones.","• Coût récurrent par arme additionnelle : 1500 Mathematics × 3 paliers achetables = 4500 Mathematics au total (~150 roulettes).","• Class lock : chaque quête doit être terminée sur le même job qui l'a acceptée. Pas de switch en cours.","• Replicas glamour gratuites chez Expedition Metallurgist (Phantom Village 6.9,7.1) après chaque palier.","• Patch 7.5 a apporté des ajustements de jobs ; les nouvelles étapes Phantom continueront d'être ajoutées dans les patchs 7.5x/7.6x."],"materiaux":[{"nom":"Waning Arcanite","source":"Achat avec Allagan Tomestones of Mathematics (quantité TBD selon patch)","qte_unite":3.0,"total_requis":57,"possede":0.0,"manquant":57},{"nom":"Allagan Tomestones of Mathematics (total)","source":"Roulettes lvl 100, raids Arcadion (estimation 1500)","qte_unite":1500.0,"total_requis":28500,"possede":0.0,"manquant":28500}],"total":[28557,0,28557],"statut":"En cours"}],"colonnes_materiaux":["Matériau / Objet","Source","Qté / unité","Total requis","Possédé","Manquant"]},"Cielacier":{"titre":"Skysteel Tools (Shadowbringers — Outils iLvl 510)","cible_defaut":10,"prerequis":["Skysteel Tools (Shadowbringers — Outils iLvl 510)","Nb d'armes/outils ciblés :","Prérequis pour débuter la série"],"etapes":[{"titre":"▶ Étape 1 — Skysteel Tool (iLvl 440)","quete":"Mislaid Plans (1ère gratuite, 80 000 gil pour les suivants)","instructions":[],"materiaux":[{"nom":"Skysteel Prototype Coffer","source":"Quête (gratuit 1ère fois) puis 80 000 gil chez Denys","qte_unite":1.0,"total_requis":10,"possede":0.0,"manquant":10}],"total":[10,0,10],"statut":"En cours"},{"titre":"▶ Étape 2 — Skysteel Tool +1 (iLvl 455)","quete":"Pickaxe-it-yourself / Hammer-it-Outerly (etc.)","instructions":[],"materiaux":[{"nom":"Oddly Specific Material (DoH)","source":"25 White Scrips chacun chez Scrip Exchange","qte_unite":20.0,"total_requis":200,"possede":0.0,"manquant":200},{"nom":"Items spécifiques récolte (DoL)","source":"Nodes dédiés (voir Gathering Log > Skysteel)","qte_unite":100.0,"total_requis":1000,"possede":0.0,"manquant":1000},{"nom":"White Crafters'/Gatherers' Scrips","source":"Livraisons Collectables niveau 80","qte_unite":500.0,"total_requis":5000,"possede":0.0,"manquant":5000}],"total":[6200,0,6200],"statut":"En cours"},{"titre":"▶ Étape 3 — Dragonsung (iLvl 475)","quete":"A Hingan Tale: Sky-high Stakes (etc.)","instructions":[],"materiaux":[{"nom":"Oddly Specific Material (DoH)","source":"25 White Scrips chacun","qte_unite":30.0,"total_requis":300,"possede":0.0,"manquant":300},{"nom":"Items spécifiques récolte tier 2 (DoL)","source":"Nodes tier 2 dédiés","qte_unite":150.0,"total_requis":1500,"possede":0.0,"manquant":1500},{"nom":"White Scrips","source":"Livraisons Collectables","qte_unite":750.0,"total_requis":7500,"possede":0.0,"manquant":7500}],"total":[9300,0,9300],"statut":"En cours"},{"titre":"▶ Étape 4 — Augmented Dragonsung (iLvl 490)","quete":"In Everyone's Best Interests (one-time)","instructions":[],"materiaux":[{"nom":"Items récolte tier 3 (DoL)","source":"Nodes spécifiques — tool ÉQUIPÉ obligatoire","qte_unite":500.0,"total_requis":5000,"possede":0.0,"manquant":5000},{"nom":"Items cachés (DoL)","source":"Sur les mêmes nodes, tool équipé","qte_unite":180.0,"total_requis":1800,"possede":0.0,"manquant":1800},{"nom":"Gobbiegoo (DoH)","source":"Échangé contre 10 'Oddly Specific' items chez Denys","qte_unite":50.0,"total_requis":500,"possede":0.0,"manquant":500}],"total":[7300,0,7300],"statut":"En cours"},{"titre":"▶ Étape 5 — Skysung Tool (iLvl 500)","quete":"Ever Skyward","instructions":[],"materiaux":[{"nom":"Highly Viscous Gobbiegoo","source":"Craft de produits Collectability 800+, échangé chez Denys","qte_unite":105.0,"total_requis":1050,"possede":0.0,"manquant":1050},{"nom":"Items récolte tier 4 (DoL)","source":"Diadem central isle (tool équipé)","qte_unite":510.0,"total_requis":5100,"possede":0.0,"manquant":5100},{"nom":"Items cachés Diadem (DoL)","source":"Diadem central isle","qte_unite":180.0,"total_requis":1800,"possede":0.0,"manquant":1800},{"nom":"Signature Skyball (Fisher)","source":"Appât spécial chez Denys (100 gil) — Fisher uniquement","qte_unite":60.0,"total_requis":600,"possede":0.0,"manquant":600}],"total":[8550,0,8550],"statut":"En cours"},{"titre":"▶ Étape 6 — Skybuilders' Tool (iLvl 510) — étape finale","quete":"Oddness in the End","instructions":["• Pour Pêcheur (Fisher) : appât Signature Skyball à acheter pour chaque palier.","• Au level cap actuel (90+), Trained Eye trivialise toutes les étapes Collectables (recipe ≥ 10 levels en-dessous).","• Tool ÉQUIPÉ obligatoire à partir d'Augmented Dragonsung pour le farming spécifique.","• Replicas glamour disponibles chez Denys / Spanner après complétion de chaque étape.","• Coût indicatif crafters : ~1250 White Scrips minimum par tool finalisé."],"materiaux":[{"nom":"Skybuilders' Items spécifiques (Diadem)","source":"Multiple récoltes/pêches Collectables The Diadem","qte_unite":1.0,"total_requis":10,"possede":0.0,"manquant":10},{"nom":"Skybuilders' Scrips","source":"Livraisons The Diadem (~1500-2000 nodes)","qte_unite":4000.0,"total_requis":40000,"possede":0.0,"manquant":40000}],"total":[40010,0,40010],"statut":"En cours"}],"colonnes_materiaux":["Matériau / Objet","Source","Qté / unité","Total requis","Possédé","Manquant"]},"Splendide":{"titre":"Splendorous Tools (Endwalker — Outils iLvl 640)","cible_defaut":10,"prerequis":["Splendorous Tools (Endwalker — Outils iLvl 640)","Nb d'armes/outils ciblés :","Prérequis pour débuter la série"],"etapes":[{"titre":"▶ Étape 1 — Splendorous Tool (iLvl 570)","quete":"An Original Improvement (1ère gratuite, 1500 White Scrips suivants)","instructions":[],"materiaux":[{"nom":"Splendorous Tool","source":"Gratuit à la 1ère quête, sinon 1500 White Scrips chez Quinnana","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1}],"total":[1,0,1],"statut":"En cours"},{"titre":"▶ Étape 2 — Augmented Splendorous (iLvl 590)","quete":"An Adaptive Tool","instructions":[],"materiaux":[{"nom":"Splendorous Components (DoH)","source":"Échangé chez Quinnana contre Collectables 1-star","qte_unite":90.0,"total_requis":90,"possede":0.0,"manquant":90},{"nom":"Splendorous Water Shards (Botanist)","source":"Échange contre items récoltés","qte_unite":180.0,"total_requis":180,"possede":0.0,"manquant":180},{"nom":"Splendorous Earth Shards (Miner)","source":"Échange contre items récoltés","qte_unite":180.0,"total_requis":180,"possede":0.0,"manquant":180},{"nom":"Splendorous Fish (Fisher)","source":"Pêche spéciale échange","qte_unite":60.0,"total_requis":60,"possede":0.0,"manquant":60}],"total":[510,0,510],"statut":"En cours"},{"titre":"▶ Étape 3 — Crystalline Tool (iLvl 620)","quete":"A Tool's Tale","instructions":[],"materiaux":[{"nom":"Adaptive Components (DoH)","source":"Collectables 2-star échangés chez Quinnana","qte_unite":90.0,"total_requis":90,"possede":0.0,"manquant":90},{"nom":"Items récolte 2-star (DoL)","source":"Nodes spécifiques 2-star, tool équipé","qte_unite":180.0,"total_requis":180,"possede":0.0,"manquant":180},{"nom":"Catches Fisher 2-star (Fisher)","source":"Pêche spéciale 2-star","qte_unite":60.0,"total_requis":60,"possede":0.0,"manquant":60}],"total":[330,0,330],"statut":"En cours"},{"titre":"▶ Étape 4 — Chora-Zoi's Crystalline / Brilliant (iLvl 625)","quete":"Patch 6.45 — Chora-Zoi","instructions":[],"materiaux":[{"nom":"Customised Components (DoH)","source":"Collectables 3-star échangés","qte_unite":90.0,"total_requis":90,"possede":0.0,"manquant":90},{"nom":"Aetherially Reduced Materials (DoL)","source":"Aetherial Reduction de récoltes HQ","qte_unite":90.0,"total_requis":90,"possede":0.0,"manquant":90}],"total":[180,0,180],"statut":"En cours"},{"titre":"▶ Étape 5 — Vrandtic Visionary's (iLvl 630)","quete":"Patch 6.55 — Expert Crafting / Gathering","instructions":[],"materiaux":[{"nom":"Expert Components (DoH)","source":"Recipes Expert Crafting collectables","qte_unite":90.0,"total_requis":90,"possede":0.0,"manquant":90},{"nom":"Items legendary unspoiled (DoL)","source":"Nodes legendary timed","qte_unite":90.0,"total_requis":90,"possede":0.0,"manquant":90}],"total":[180,0,180],"statut":"En cours"},{"titre":"▶ Étape 6 — Lodestar Tool (iLvl 640) — étape finale","quete":"Patch 6.55 — étape finale Splendorous","instructions":["• Recipes craft : Crafting Log > Special Recipes > Sidequests > Splendorous Tools.","• Nodes récolte : Gathering Log > Special > Sidequests > Splendorous Tools.","• Bonus permanent du tool final : +1.75x sur Good condition (Crafters), +20% Collector's Intuition (Mineur/Botaniste), -50% GP Powerful/Precision Hookset (Pêcheur).","• Au level cap Dawntrail (100), ces outils restent utiles en expert crafting.","• Trained Eye NON applicable (collectables high level), prévoir macros adaptées."],"materiaux":[{"nom":"Composants ultimes (DoH)","source":"Expert Crafting + livraisons spéciales","qte_unite":90.0,"total_requis":90,"possede":0.0,"manquant":90},{"nom":"Items récolte ultimes (DoL)","source":"Aetherial Reduction extensive","qte_unite":90.0,"total_requis":90,"possede":0.0,"manquant":90}],"total":[180,0,180],"statut":"En cours"}],"colonnes_materiaux":["Matériau / Objet","Source","Qté / unité","Total requis","Possédé","Manquant"]},"Cosmique":{"titre":"Cosmic Tools (Dawntrail — Outils iLvl 750, en cours d'extension)","cible_defaut":10,"prerequis":["Cosmic Tools (Dawntrail — Outils iLvl 750, en cours d'extension)","Nb d'armes/outils ciblés :","Prérequis pour débuter la série"],"etapes":[{"titre":"▶ Étape 1 — Cosmic Tool de base","quete":"A Cosmic Homecoming (1ère gratuite via quête, suivantes gratuites chez Researchingway)","instructions":[],"materiaux":[{"nom":"Cosmic Tool de base","source":"1ère donnée par la quête, suivantes gratuites chez Researchingway (Sinus Ardorum 21.1,21.8)","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1}],"total":[1,0,1],"statut":"En cours"},{"titre":"▶ Étape 2 — Stellar Tools (paliers intermédiaires)","quete":"Stellar Missions (Cosmic Exploration)","instructions":[],"materiaux":[{"nom":"Research Data (lvl 10-49)","source":"Stellar Missions Sinus Ardorum (Lune) — données de recherche accumulées","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1},{"nom":"Lunar Credits","source":"Récompense Stellar Missions Gold rank","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1},{"nom":"Cosmic Mission Reports","source":"Délivrés lors des Stellar Successes (dailies)","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1}],"total":[3,0,3],"statut":"En cours"},{"titre":"▶ Étape 3 — Stellar Tools (paliers 50-89)","quete":"Stellar Missions plus complexes","instructions":[],"materiaux":[{"nom":"Research Data (lvl 50-89)","source":"Stellar Missions de plus haut niveau","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1},{"nom":"Cosmic Credits","source":"Devise principale farmée via missions Gold + Red Alerts","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1}],"total":[2,0,2],"statut":"En cours"},{"titre":"▶ Étape 4 — Cosmic Tool lvl 100 (iLvl 740 estimé)","quete":"Cosmic Exploration lvl 100","instructions":[],"materiaux":[{"nom":"Research Data (lvl 90-100)","source":"Stellar Missions endgame","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1},{"nom":"Stellar Mission Gold ratings","source":"Notation Gold sur missions endgame","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1}],"total":[2,0,2],"statut":"En cours"},{"titre":"▶ Étape 5 — Cosmic Tool évolué (iLvl 745+)","quete":"Mission of Gravity → Oizys (Patch 7.41)","instructions":[],"materiaux":[{"nom":"Accès Oizys","source":"Quête 'Mission of Gravity' chez Searchingway (Phaenna 27.0,13.9)","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1},{"nom":"Research Data Oizys","source":"Stellar Missions sur Oizys (nouvelles missions patch 7.41)","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1},{"nom":"Cosmic Credits Oizys","source":"Devise zone Oizys","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1}],"total":[3,0,3],"statut":"En cours"},{"titre":"▶ Étape 6 — Cosmic Tool ultime (iLvl 750) — étape finale actuelle","quete":"Missions endgame Oizys / Future planètes","instructions":["• PARTICULARITÉ : les Cosmic Tools démarrent au LVL 10 et grandissent avec votre métier. Idéal pour leveling un métier from scratch.","• Bonus permanents : +1.75x Quality on Good (Crafters), +20% Collector's Intuition (Mineur/Botaniste), -50% GP Hookset (Pêcheur), +35% Region Credits avec tool équipé.","• Pas de meld slots — mais les outils ont l'équivalent de CP/GP melded directement.","• Système de Cosmopouch : inventaire séparé pour les items Cosmic — pas besoin de vider votre inventaire principal.","• Stellar Sprint permanent (+50% movement) dans la zone Cosmic.","• Récompenses annexes : mounts, minions, glamour, dyes (11 nouveaux teintures), Loporrit parasol, facewear, achievements.","• Au level cap actuel : le Cosmic Tool ultime (i750) est directement utilisable et viable pour l'endgame crafting/gathering.","• À considérer comme un REMPLACEMENT direct des Splendorous : pas besoin de farmer les deux séries."],"materiaux":[{"nom":"Recherche extensive Oizys","source":"Missions Gold + Red Alerts sur Oizys","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1},{"nom":"Cosmic Credits (large amount)","source":"Pour finaliser les paliers ultimes","qte_unite":1.0,"total_requis":1,"possede":0.0,"manquant":1}],"total":[2,0,2],"statut":"En cours"}],"colonnes_materiaux":["Matériau / Objet","Source","Qté / unité","Total requis","Possédé","Manquant"]}}</script>
+<script>(function(){
+"use strict";
+
+const DATA = JSON.parse(document.getElementById('series-data').textContent);
+
+const ORDER = ["Zodiaque","Anima","Eureka","Resistance","Cielacier","Manderville","Splendide","Fantôme","Cosmique"];
+
+const META = {
+  Zodiaque:   {extension:"A Realm Reborn",   type:"Combat",  diff:"Très long"},
+  Anima:      {extension:"Heavensward",      type:"Combat",  diff:"Très long"},
+  Eureka:     {extension:"Stormblood",       type:"Combat",  diff:"Long (zone instanciée)"},
+  Resistance: {extension:"Shadowbringers",   type:"Combat",  diff:"Moyen (Bozja / Zadnor)"},
+  Cielacier:  {extension:"Shadowbringers",   type:"DoH / DoL", diff:"Long (craft / gather)"},
+  Manderville:{extension:"Endwalker",        type:"Combat",  diff:"Facile (Tomestones)"},
+  Splendide:  {extension:"Endwalker",        type:"DoH / DoL", diff:"Long (craft / gather)"},
+  "Fantôme":  {extension:"Dawntrail",        type:"Combat",  diff:"Long (Occult Crescent)"},
+  Cosmique:   {extension:"Dawntrail",        type:"DoH / DoL", diff:"Moyen (Cosmic Exploration)"},
+};
+
+const STORAGE_KEY = "armes-relique-progress";
+
+let state = { targets:{}, possede:{}, notes:{}, openSteps:{} };
+let currentView = "dashboard"; // "dashboard" or a series key
+let saveTimer = null;
+
+// ---------- storage (localStorage : natif au navigateur, fonctionne en fichier local ou hébergé) ----------
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      const parsed = JSON.parse(raw);
+      state = Object.assign({targets:{}, possede:{}, notes:{}, openSteps:{}}, parsed);
+    }
+  }catch(e){ /* premier lancement : rien à charger, ou stockage indisponible (navigation privée, etc.) */ }
+}
+
+function scheduleSave(){
+  clearTimeout(saveTimer);
+  const ind = document.getElementById('saveIndicator');
+  if(ind) ind.textContent = "Enregistrement…";
+  saveTimer = setTimeout(()=>{
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      if(ind) ind.textContent = "Progrès enregistré ✓";
+      setTimeout(()=>{ if(ind) ind.textContent=""; }, 1800);
+    }catch(e){
+      if(ind) ind.textContent = "Échec de l'enregistrement (stockage indisponible)";
+    }
+  }, 300);
+}
+
+function resetAll(){
+  if(!confirm("Réinitialiser tout votre suivi de progression ? Cette action est irréversible.")) return;
+  state = { targets:{}, possede:{}, notes:{}, openSteps:{} };
+  try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+  currentView = "dashboard";
+  renderAll();
+}
+
+// ---------- data helpers ----------
+function getTarget(key){
+  const t = state.targets[key];
+  if(t === undefined || t === null || isNaN(t)) return DATA[key].cible_defaut || 1;
+  return t;
+}
+function setTarget(key, val){
+  const n = Math.max(0, parseInt(val,10) || 0);
+  state.targets[key] = n;
+}
+function getPossede(key, si, mi){
+  const v = state.possede[key+"|"+si+"|"+mi];
+  return (v===undefined||v===null||isNaN(v)) ? 0 : v;
+}
+function setPossede(key, si, mi, val){
+  const n = Math.max(0, parseFloat(val) || 0);
+  state.possede[key+"|"+si+"|"+mi] = n;
+}
+function getNotes(key){
+  if(!state.notes[key]) state.notes[key] = {job:"", etape:"", statut:"", notes:"", dateDebut:"", dateCible:""};
+  return state.notes[key];
+}
+
+function computeRow(key, si, mi, target){
+  const m = DATA[key].etapes[si].materiaux[mi];
+  const totalRequis = Math.round(m.qte_unite * target * 100)/100;
+  const possede = getPossede(key, si, mi);
+  const manquant = Math.max(Math.round((totalRequis - possede)*100)/100, 0);
+  return {totalRequis, possede, manquant};
+}
+
+function stepStatus(key, si){
+  const step = DATA[key].etapes[si];
+  const target = getTarget(key);
+  if(!step.materiaux.length) return {ok:false, requis:0, possede:0, manquant:0};
+  let requis=0, possede=0, manquant=0;
+  step.materiaux.forEach((m, mi)=>{
+    const r = computeRow(key, si, mi, target);
+    requis += r.totalRequis;
+    possede += Math.min(r.possede, r.totalRequis);
+    manquant += r.manquant;
+  });
+  return {ok: manquant<=0.0001, requis, possede, manquant};
+}
+
+function seriesStats(key){
+  const steps = DATA[key].etapes;
+  let sumRequis=0, sumPossede=0, doneSteps=0;
+  steps.forEach((s, si)=>{
+    const st = stepStatus(key, si);
+    sumRequis += st.requis;
+    sumPossede += st.possede;
+    if(st.ok) doneSteps++;
+  });
+  const pct = sumRequis>0 ? Math.round(sumPossede/sumRequis*100) : 0;
+  return {pct, doneSteps, totalSteps: steps.length};
+}
+
+function globalStats(){
+  let sumRequis=0, sumPossede=0, doneSteps=0, totalSteps=0;
+  ORDER.forEach(key=>{
+    DATA[key].etapes.forEach((s, si)=>{
+      const st = stepStatus(key, si);
+      sumRequis += st.requis; sumPossede += st.possede;
+      if(st.ok) doneSteps++;
+      totalSteps++;
+    });
+  });
+  const pct = sumRequis>0 ? Math.round(sumPossede/sumRequis*100) : 0;
+  return {pct, doneSteps, totalSteps};
+}
+
+function cleanTitle(t){ return t.replace(/^▶\s*/, "").trim(); }
+function cleanInstr(t){ return t.replace(/^•\s*/, "").trim(); }
+
+// ---------- rendering ----------
+function el(html){ const d=document.createElement('div'); d.innerHTML=html.trim(); return d.firstElementChild; }
+
+function renderRail(){
+  const rail = document.getElementById('rail');
+  const g = globalStats();
+  const ringStyle = `background:conic-gradient(var(--crystal) ${g.pct*3.6}deg, #2a2b3f 0deg)`;
+  let navItems = ORDER.map(key=>{
+    const s = seriesStats(key);
+    const active = currentView===key ? "active" : "";
+    return `<li><button class="${active}" data-nav="${key}">
+      <div class="nav-top"><span class="nav-name">${DATA[key].titre.split(" (")[0]}</span><span class="nav-ext">${META[key].extension}</span></div>
+      <div class="nav-bar"><i id="navbar-${key}" style="width:${s.pct}%"></i></div>
+      <div class="nav-pct" id="navpct-${key}">${s.pct}% · ${s.doneSteps}/${s.totalSteps} étapes</div>
+    </button></li>`;
+  }).join("");
+
+  rail.innerHTML = `
+    <div class="brand">
+      <div class="mark">Codex des reliques</div>
+      <h1 class="serif">Suivi ARR → Dawntrail</h1>
+      <p>Votre progression personnelle sur les armes et outils reliques, série par série.</p>
+    </div>
+    <div class="global-box">
+      <div class="global-row">
+        <div class="ring" id="globalRing" style="border-radius:50%;${ringStyle}">
+          <div style="width:38px;height:38px;border-radius:50%;background:var(--bg-alt);margin:9px;display:flex;align-items:center;justify-content:center;">
+            <span class="global-num" id="globalpct">${g.pct}%</span>
+          </div>
+        </div>
+        <div class="global-label">Progression globale<br>${g.doneSteps} / ${g.totalSteps} étapes terminées</div>
+      </div>
+    </div>
+    <ul class="navlist">
+      <li><button class="${currentView==='dashboard'?'active':''}" data-nav="dashboard">
+        <div class="nav-top"><span class="nav-name">Vue d'ensemble</span></div>
+      </button></li>
+    </ul>
+    <div style="height:10px"></div>
+    <ul class="navlist">${navItems}</ul>
+    <div class="rail-foot">
+      <button class="reset-btn" id="resetBtn">Réinitialiser tout le suivi</button>
+      <div class="save-indicator" id="saveIndicator"></div>
+    </div>
+  `;
+
+  rail.querySelectorAll('[data-nav]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ currentView = btn.dataset.nav; renderAll(); window.scrollTo(0,0); });
+  });
+  document.getElementById('resetBtn').addEventListener('click', resetAll);
+}
+
+function renderDashboard(){
+  const main = document.getElementById('main');
+  const cards = ORDER.map(key=>{
+    const s = seriesStats(key);
+    const m = META[key];
+    return `<div class="dash-card" data-open="${key}">
+      <h4 class="serif">${DATA[key].titre.split(" (")[0]}</h4>
+      <div class="sub">${m.extension} · ${m.type} · ${m.diff}</div>
+      <div class="bar"><i style="width:${s.pct}%"></i></div>
+      <div class="foot"><span>${s.doneSteps}/${s.totalSteps} étapes</span><span>${s.pct}%</span></div>
+    </div>`;
+  }).join("");
+
+  main.innerHTML = `
+    <div class="series-head">
+      <div class="eyebrow">Vue d'ensemble</div>
+      <h2 class="serif">Toutes les séries de reliques</h2>
+      <p style="color:var(--text-dim);font-size:13px;max-width:60ch;line-height:1.6;">
+        Neuf séries d'armes et d'outils reliques, de A Realm Reborn à Dawntrail. Cliquez sur une série
+        pour saisir votre nombre de jobs ciblés, cocher vos matériaux possédés et suivre chaque étape d'évolution.
+      </p>
+    </div>
+    <div class="dash-grid">${cards}</div>
+    <div class="recap-toggle" id="recapToggle">▸ Récapitulatif des matériaux / devises transversales</div>
+    <div class="recap-body" id="recapBody">
+      <table class="recap-table">
+        <thead><tr><th>Matériau / devise</th><th>Séries concernées</th><th>Source principale</th><th>Plafond</th></tr></thead>
+        <tbody>
+          <tr><td class="n">Allagan Tomestones of Poetics</td><td>Zodiac, Anima, Resistance, Manderville</td><td>Roulettes, raids, contenu endgame</td><td>2000</td></tr>
+          <tr><td class="n">White Crafters'/Gatherers' Scrips</td><td>Skysteel, Splendorous</td><td>Livraisons Collectables niveau cap</td><td>4000</td></tr>
+          <tr><td class="n">Purple Crafters'/Gatherers' Scrips</td><td>Splendorous (étapes avancées)</td><td>Collectables top tier</td><td>4000</td></tr>
+          <tr><td class="n">Skybuilders' Scrips</td><td>Skysteel (étape finale)</td><td>The Diadem</td><td>20000</td></tr>
+          <tr><td class="n">FATEs Heavensward (gold)</td><td>Anima, Resistance, Zodiac</td><td>Zones Heavensward, gold medal</td><td>—</td></tr>
+          <tr><td class="n">Allagan Tomestones of Mathematics</td><td>Phantom</td><td>Roulettes lvl 100, raids Arcadion</td><td>2000</td></tr>
+          <tr><td class="n">Collectables HQ (DoH/DoL)</td><td>Skysteel, Splendorous</td><td>Crafts / récoltes dédiées</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  `;
+  main.querySelectorAll('[data-open]').forEach(c=>{
+    c.addEventListener('click', ()=>{ currentView = c.dataset.open; renderAll(); window.scrollTo(0,0); });
+  });
+  const rt = document.getElementById('recapToggle');
+  rt.addEventListener('click', ()=>{
+    const body = document.getElementById('recapBody');
+    body.classList.toggle('open');
+    rt.textContent = (body.classList.contains('open') ? "▾ " : "▸ ") + "Récapitulatif des matériaux / devises transversales";
+  });
+}
+
+function renderSeries(key){
+  const main = document.getElementById('main');
+  const sdata = DATA[key];
+  const m = META[key];
+  const target = getTarget(key);
+  const s = seriesStats(key);
+
+  const prereqHtml = sdata.prerequis.length ? `
+    <div class="prereqs">
+      <div class="lbl">Prérequis pour débuter la série</div>
+      <ul>${sdata.prerequis.filter(p=>p.startsWith('•')).map(p=>`<li>${cleanInstr(p)}</li>`).join("") || sdata.prerequis.map(p=>`<li>${p}</li>`).join("")}</ul>
+    </div>` : "";
+
+  const stepsHtml = sdata.etapes.map((step, si)=>{
+    const st = stepStatus(key, si);
+    const open = !!(state.openSteps[key+"|"+si]);
+    const questLine = (step.quete && step.quete !== "∅") ? `<span class="step-quest">Quête : ${step.quete}</span>` : "";
+    const instrHtml = step.instructions.length ? `<ul class="instr-list">${step.instructions.map(i=>`<li>${cleanInstr(i)}</li>`).join("")}</ul>` : "";
+    const matRows = step.materiaux.map((mat, mi)=>{
+      const r = computeRow(key, si, mi, target);
+      const missingClass = r.manquant<=0.0001 ? "zero" : "some";
+      return `<tr>
+        <td><div class="mat-name">${mat.nom}</div>${mat.source ? `<div class="mat-source">${mat.source}</div>` : ""}</td>
+        <td class="mat-num" id="tot-${key}-${si}-${mi}">${r.totalRequis}</td>
+        <td class="mat-num"><input class="mat-input" type="number" min="0" step="1" value="${r.possede}" data-key="${key}" data-si="${si}" data-mi="${mi}"></td>
+        <td class="mat-num mat-missing ${missingClass}" id="man-${key}-${si}-${mi}">${r.manquant}</td>
+      </tr>`;
+    }).join("");
+    const notesHtml = step.notes_materiaux ? `<div class="step-notes">${step.notes_materiaux.map(n=>`<div>· ${n}</div>`).join("")}</div>` : "";
+    const table = step.materiaux.length ? `
+      <table class="mat">
+        <thead><tr><th>Matériau / objet</th><th>Requis</th><th>Possédé</th><th>Manquant</th></tr></thead>
+        <tbody>${matRows}</tbody>
+      </table>
+      <div class="step-total" id="steptotal-${key}-${si}">
+        <span>Requis : ${st.requis}</span><span>Possédé : ${st.possede}</span><span>Manquant : ${st.manquant}</span>
+      </div>` : "";
+
+    return `<div class="step ${st.ok?'ok':''} ${open?'open':''}" id="step-${key}-${si}">
+      <div class="step-node"></div>
+      <div class="step-card">
+        <div class="step-summary" data-toggle="${key}|${si}">
+          <div class="step-title">${cleanTitle(step.titre)}${questLine}</div>
+          <span class="badge" id="stepbadge-${key}-${si}">${st.ok ? "OK ✓" : "En cours"}</span>
+          <span class="chevron">›</span>
+        </div>
+        <div class="step-body">
+          ${instrHtml}
+          ${table}
+          ${notesHtml}
+        </div>
+      </div>
+    </div>`;
+  }).join("");
+
+  const notes = getNotes(key);
+
+  main.innerHTML = `
+    <div class="series-head">
+      <div class="eyebrow"><button id="backBtn" style="background:none;border:none;color:var(--crystal);cursor:pointer;font-size:12px;padding:0;font-family:inherit;">← Vue d'ensemble</button></div>
+      <h2 class="serif">${sdata.titre}</h2>
+      <div class="series-meta"><span><b>${m.extension}</b></span><span>${m.type}</span><span>${m.diff}</span></div>
+      <div class="target-row">
+        <label for="targetInput">Nombre d'armes/outils ciblés</label>
+        <input type="number" id="targetInput" min="0" max="24" value="${target}">
+        <div class="overall-bar"><i id="seriesbar-${key}" style="width:${s.pct}%"></i></div>
+        <span class="overall-pct" id="seriespct-${key}">${s.pct}%</span>
+      </div>
+    </div>
+    ${prereqHtml}
+    <div class="timeline">${stepsHtml}</div>
+
+    <div class="suivi">
+      <h3>Mon suivi — ${sdata.titre.split(" (")[0]}</h3>
+      <p class="hint">Notes personnelles, indépendantes du calcul automatique des matériaux.</p>
+      <div class="suivi-grid">
+        <div class="suivi-field"><label>Job / métier ciblé</label><input type="text" id="notes-job" value="${notes.job}" placeholder="ex. Paladin, Miner…"></div>
+        <div class="suivi-field"><label>Étape actuelle</label><input type="text" id="notes-etape" value="${notes.etape}" placeholder="ex. Étape 3 — Atma"></div>
+        <div class="suivi-field"><label>Statut</label>
+          <select id="notes-statut">
+            <option value="" ${notes.statut===""?"selected":""}>—</option>
+            <option value="À faire" ${notes.statut==="À faire"?"selected":""}>À faire</option>
+            <option value="En cours" ${notes.statut==="En cours"?"selected":""}>En cours</option>
+            <option value="En pause" ${notes.statut==="En pause"?"selected":""}>En pause</option>
+            <option value="Terminé" ${notes.statut==="Terminé"?"selected":""}>Terminé</option>
+          </select>
+        </div>
+        <div class="suivi-field"><label>Date de début</label><input type="date" id="notes-debut" value="${notes.dateDebut}"></div>
+        <div class="suivi-field"><label>Date cible</label><input type="date" id="notes-cible" value="${notes.dateCible}"></div>
+        <div class="suivi-field full"><label>Notes</label><textarea id="notes-notes" placeholder="Vos remarques, farms en cours, etc.">${notes.notes}</textarea></div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('backBtn').addEventListener('click', ()=>{ currentView='dashboard'; renderAll(); window.scrollTo(0,0); });
+
+  document.getElementById('targetInput').addEventListener('input', (e)=>{
+    setTarget(key, e.target.value);
+    updateSeriesNumbers(key);
+    scheduleSave();
+  });
+
+  main.querySelectorAll('.mat-input').forEach(inp=>{
+    inp.addEventListener('input', (e)=>{
+      const {key:k, si, mi} = e.target.dataset;
+      setPossede(k, si, mi, e.target.value);
+      updateRow(k, si, mi);
+      updateStepTotal(k, si);
+      updateSeriesNumbers(k);
+      scheduleSave();
+    });
+  });
+
+  main.querySelectorAll('[data-toggle]').forEach(hdr=>{
+    hdr.addEventListener('click', ()=>{
+      const [k, si] = hdr.dataset.toggle.split("|");
+      const stepEl = document.getElementById(`step-${k}-${si}`);
+      const openKey = k+"|"+si;
+      const isOpen = stepEl.classList.toggle('open');
+      state.openSteps[openKey] = isOpen;
+      scheduleSave();
+    });
+  });
+
+  ["job","etape","statut","debut","cible","notes"].forEach(f=>{
+    const node = document.getElementById('notes-'+f);
+    const field = f==="debut" ? "dateDebut" : f==="cible" ? "dateCible" : f;
+    node.addEventListener('input', ()=>{ getNotes(key)[field] = node.value; scheduleSave(); });
+    node.addEventListener('change', ()=>{ getNotes(key)[field] = node.value; scheduleSave(); });
+  });
+}
+
+// ---------- targeted DOM updates (avoid full re-render / focus loss) ----------
+function updateRow(key, si, mi){
+  const target = getTarget(key);
+  const r = computeRow(key, si, mi, target);
+  const tot = document.getElementById(`tot-${key}-${si}-${mi}`);
+  const man = document.getElementById(`man-${key}-${si}-${mi}`);
+  if(tot) tot.textContent = r.totalRequis;
+  if(man){
+    man.textContent = r.manquant;
+    man.classList.toggle('zero', r.manquant<=0.0001);
+    man.classList.toggle('some', r.manquant>0.0001);
+  }
+}
+
+function updateStepTotal(key, si){
+  const st = stepStatus(key, si);
+  const totalEl = document.getElementById(`steptotal-${key}-${si}`);
+  if(totalEl) totalEl.innerHTML = `<span>Requis : ${st.requis}</span><span>Possédé : ${st.possede}</span><span>Manquant : ${st.manquant}</span>`;
+  const badge = document.getElementById(`stepbadge-${key}-${si}`);
+  if(badge) badge.textContent = st.ok ? "OK ✓" : "En cours";
+  const stepEl = document.getElementById(`step-${key}-${si}`);
+  if(stepEl) stepEl.classList.toggle('ok', st.ok);
+}
+
+function updateSeriesNumbers(key){
+  // recompute every row's totals for this series (target changed) then aggregates
+  DATA[key].etapes.forEach((step, si)=>{
+    step.materiaux.forEach((m, mi)=> updateRow(key, si, mi));
+    updateStepTotal(key, si);
+  });
+  const s = seriesStats(key);
+  const bar = document.getElementById(`seriesbar-${key}`);
+  const pct = document.getElementById(`seriespct-${key}`);
+  if(bar) bar.style.width = s.pct+"%";
+  if(pct) pct.textContent = s.pct+"%";
+  const navbar = document.getElementById(`navbar-${key}`);
+  const navpct = document.getElementById(`navpct-${key}`);
+  if(navbar) navbar.style.width = s.pct+"%";
+  if(navpct) navpct.textContent = `${s.pct}% · ${s.doneSteps}/${s.totalSteps} étapes`;
+  const g = globalStats();
+  const gp = document.getElementById('globalpct');
+  if(gp) gp.textContent = g.pct+"%";
+  const ring = document.getElementById('globalRing');
+  if(ring) ring.style.background = `conic-gradient(var(--crystal) ${g.pct*3.6}deg, #2a2b3f 0deg)`;
+}
+
+function renderAll(){
+  renderRail();
+  if(currentView === "dashboard") renderDashboard();
+  else renderSeries(currentView);
+}
+
+// ---------- boot ----------
+(function boot(){
+  loadState();
+  renderAll();
+})();
+
+})();
+</script>
+</body>
+</html>
