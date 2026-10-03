@@ -1,0 +1,12 @@
+{
+  "_comment": "Deux formats possibles par ligne. (1) Chaine simple = icone seule : soit une URL officielle Lodestone (meta og:image de la page de l'objet), soit un numero de fichier local dans icons/. (2) Objet {icon, link} = icone ET info-bulle officielle Fan Kit Tooltip au survol (link = URL de la page Lodestone de l'objet, ex: https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/XXXXXXXXXXX). Les slugs sont dans la colonne 'Nom de fichier attendu' de icones-a-fournir.csv (sans le .png). Tant qu'un objet n'a pas de ligne, l'icone generique par categorie reste affichee.",
+
+  "marteau-a-panne-croisee-superstellaire": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/6b/6b4d2cd7fb7056e8b19003935875f548a748d110.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/d55d1338b13"
+  },
+  "atma-du-sagittaire": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/d2/d2de9785220ab36fb3cf438ae4de5633017e56e8.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/c2e76099a41"
+  }
+}
