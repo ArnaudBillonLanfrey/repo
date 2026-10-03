@@ -823,13 +823,34 @@ const ICON_SVG = {
   special: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>',
   autre: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/>',
 };
+// Correspondance "slug matériau" -> "numéro d'icône brut" (icons/icon-map.json), éditable
+// directement sur GitHub sans régénérer l'app. Vide par défaut = fallback sur l'icône générique.
+// Icônes officielles Lodestone confirmées — intégrées en dur pour marcher même en local
+// (file://) sans attendre le déploiement. icons/icon-map.json (une fois déployé en http(s))
+// vient compléter/écraser cette liste avec tes propres ajouts.
+let ICON_MAP = {
+  "marteau-a-panne-croisee-superstellaire": "https://lds-img.finalfantasyxiv.com/itemicon/6b/6b4d2cd7fb7056e8b19003935875f548a748d110.png",
+  "atma-du-sagittaire": "https://lds-img.finalfantasyxiv.com/itemicon/d2/d2de9785220ab36fb3cf438ae4de5633017e56e8.png",
+};
+async function loadIconMap(){
+  try{
+    const res = await fetch("icons/icon-map.json", {cache:"no-store"});
+    if(res.ok) ICON_MAP = Object.assign({}, ICON_MAP, await res.json());
+  }catch(e){ /* pas de carte dispo (ex: ouverture en local file://) : on garde la liste en dur */ }
+  renderAll();
+}
 function materialIconHtml(nom, source){
   const cat = classifyMaterial(nom, source);
   const slug = slugify(nom);
   const svg = ICON_SVG[cat] || ICON_SVG.autre;
+  const mapped = ICON_MAP[slug];
+  // mapped peut être une URL complète (icône officielle Lodestone) ou un numéro local (icons/XXXXX.png)
+  const imgSrc = mapped
+    ? (/^https?:\/\//i.test(mapped) ? mapped : `icons/${mapped}.png`)
+    : `icons/${slug}.png`;
   return `<span class="mat-icon" title="${cat}">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${svg}</svg>
-    <img src="icons/${slug}.png" alt="" loading="lazy" onload="this.style.opacity=1" onerror="this.remove()">
+    <img src="${imgSrc}" alt="" loading="lazy" onload="this.style.opacity=1" onerror="this.remove()">
   </span>`;
 }
 
@@ -1509,6 +1530,7 @@ function renderAll(){
   applyTheme(safeGetTheme(), false);
   loadState();
   renderAll();
+  loadIconMap(); // re-rendu silencieux une fois la carte d'icônes chargée (si présente)
 })();
 
 })();
