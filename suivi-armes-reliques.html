@@ -230,6 +230,8 @@ body{
 .step-title{font-size:14.5px;font-weight:600;flex:1;min-width:0;}
 .step-quest{font-size:11.5px;color:var(--text-faint);display:block;margin-top:2px;font-weight:400;}
 .game-term{font-family:'EB Garamond',serif;font-style:italic;font-weight:600;color:var(--crystal);letter-spacing:.01em;}
+.eorzeadb_link{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor;cursor:help;}
+.eorzeadb_link:hover{border-bottom-style:solid;}
 .badge{
   font-size:10.5px;padding:3px 9px;border-radius:20px;white-space:nowrap;flex:0 0 auto;
   border:1px solid var(--line);color:var(--text-dim);
@@ -825,12 +827,21 @@ const ICON_SVG = {
 };
 // Correspondance "slug matériau" -> "numéro d'icône brut" (icons/icon-map.json), éditable
 // directement sur GitHub sans régénérer l'app. Vide par défaut = fallback sur l'icône générique.
-// Icônes officielles Lodestone confirmées — intégrées en dur pour marcher même en local
+// Icônes + liens Lodestone officiels confirmés — intégrés en dur pour marcher même en local
 // (file://) sans attendre le déploiement. icons/icon-map.json (une fois déployé en http(s))
 // vient compléter/écraser cette liste avec tes propres ajouts.
+// Format par entrée : soit une chaîne (URL d'icône ou numéro local, comme avant),
+// soit un objet {icon:"...", link:"..."} si tu as aussi le lien de la page Lodestone
+// (le lien active l'info-bulle officielle Fan Kit Tooltip au survol).
 let ICON_MAP = {
-  "marteau-a-panne-croisee-superstellaire": "https://lds-img.finalfantasyxiv.com/itemicon/6b/6b4d2cd7fb7056e8b19003935875f548a748d110.png",
-  "atma-du-sagittaire": "https://lds-img.finalfantasyxiv.com/itemicon/d2/d2de9785220ab36fb3cf438ae4de5633017e56e8.png",
+  "marteau-a-panne-croisee-superstellaire": {
+    icon: "https://lds-img.finalfantasyxiv.com/itemicon/6b/6b4d2cd7fb7056e8b19003935875f548a748d110.png",
+    link: "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/d55d1338b13",
+  },
+  "atma-du-sagittaire": {
+    icon: "https://lds-img.finalfantasyxiv.com/itemicon/d2/d2de9785220ab36fb3cf438ae4de5633017e56e8.png",
+    link: "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/c2e76099a41",
+  },
 };
 async function loadIconMap(){
   try{
@@ -839,14 +850,26 @@ async function loadIconMap(){
   }catch(e){ /* pas de carte dispo (ex: ouverture en local file://) : on garde la liste en dur */ }
   renderAll();
 }
+function mapEntry(slug){
+  const v = ICON_MAP[slug];
+  if(v == null) return {icon:null, link:null};
+  if(typeof v === "string") return {icon:v, link:null};
+  return {icon:v.icon||null, link:v.link||null};
+}
+// Enrobe un nom de matériau d'un lien Fan Kit Tooltip officiel si on a son URL Lodestone
+function matLinkWrap(displayHtml, nom){
+  const {link} = mapEntry(slugify(nom));
+  if(!link) return displayHtml;
+  return `<a href="${link}" class="eorzeadb_link" target="_blank" rel="noopener">${displayHtml}</a>`;
+}
 function materialIconHtml(nom, source){
   const cat = classifyMaterial(nom, source);
   const slug = slugify(nom);
   const svg = ICON_SVG[cat] || ICON_SVG.autre;
-  const mapped = ICON_MAP[slug];
-  // mapped peut être une URL complète (icône officielle Lodestone) ou un numéro local (icons/XXXXX.png)
-  const imgSrc = mapped
-    ? (/^https?:\/\//i.test(mapped) ? mapped : `icons/${mapped}.png`)
+  const {icon: mappedIcon} = mapEntry(slug);
+  // mappedIcon peut être une URL complète (icône officielle Lodestone) ou un numéro local (icons/XXXXX.png)
+  const imgSrc = mappedIcon
+    ? (/^https?:\/\//i.test(mappedIcon) ? mappedIcon : `icons/${mappedIcon}.png`)
     : `icons/${slug}.png`;
   return `<span class="mat-icon" title="${cat}">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${svg}</svg>
@@ -1132,7 +1155,7 @@ function renderSeries(key){
       const r = computeRow(key, si, mi, target);
       const missingClass = r.manquant<=0.0001 ? "zero" : "some";
       return `<tr>
-        <td><div class="mat-name-row">${materialIconHtml(mat.nom, mat.source)}<div><div class="mat-name">${dispName(mat)}</div>${mat.source ? `<div class="mat-source">${mat.source}</div>` : ""}</div></div></td>
+        <td><div class="mat-name-row">${materialIconHtml(mat.nom, mat.source)}<div><div class="mat-name">${matLinkWrap(dispName(mat), mat.nom)}</div>${mat.source ? `<div class="mat-source">${mat.source}</div>` : ""}</div></div></td>
         <td class="mat-num" id="tot-${key}-${si}-${mi}">${r.totalRequis}</td>
         <td class="mat-possede-cell">
           <div class="stepper sm">
@@ -1326,7 +1349,7 @@ function renderSeriesPerJob(key){
         const r = computeRowPJ(key, si, job, mi);
         const missingClass = r.manquant<=0.0001 ? "zero" : "some";
         return `<tr>
-          <td><div class="mat-name-row">${materialIconHtml(mat.nom, mat.source)}<div><div class="mat-name">${dispName(mat)}</div>${mat.source ? `<div class="mat-source">${mat.source}</div>` : ""}</div></div></td>
+          <td><div class="mat-name-row">${materialIconHtml(mat.nom, mat.source)}<div><div class="mat-name">${matLinkWrap(dispName(mat), mat.nom)}</div>${mat.source ? `<div class="mat-source">${mat.source}</div>` : ""}</div></div></td>
           <td class="mat-num" id="tot-${key}-${si}-${job}-${mi}">${r.totalRequis}</td>
           <td class="mat-possede-cell">
             <div class="stepper sm">
@@ -1535,5 +1558,6 @@ function renderAll(){
 
 })();
 </script>
+<script src="https://lds-img.finalfantasyxiv.com/pc/global/js/eorzeadb/loader.js?v3" async></script>
 </body>
 </html>
