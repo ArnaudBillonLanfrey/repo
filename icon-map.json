@@ -939,10 +939,20 @@
   "materiau-de-premier-niveau-pour-outil-des-merveilles-de-mineur": {
     "icon": "https://www.garlandtools.org/files/icons/item/21232.png"
   },
-  "materiau-de-premier-niveau-pour-hampe-doutil-des-merveilles-de-pecheur": {
-    "icon": "https://www.garlandtools.org/files/icons/item/22666.png"
+  "materiau-de-premier-niveau-pour-hampe-doutil-des-merveilles-de-pecheur": "https://lds-img.finalfantasyxiv.com/itemicon/92/926179ad1271c514870f6c50f8a06be8980c9ea4.png",
+  "materiau-de-premier-niveau-pour-moulinet-doutil-des-merveilles-de-pecheur": "https://lds-img.finalfantasyxiv.com/itemicon/92/926179ad1271c514870f6c50f8a06be8980c9ea4.png",
+  "materiau-de-quatrieme-niveau-pour-hampe-doutil-des-merveilles-de-pecheur": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/5c/5c9c4a97fed8f75671eda6db40f3b5351076a4db.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/cfa9a338c88"
   },
-  "materiau-de-premier-niveau-pour-moulinet-doutil-des-merveilles-de-pecheur": {
-    "icon": "https://www.garlandtools.org/files/icons/item/22668.png"
-  }
+  "materiau-de-cinquieme-niveau-pour-outil-des-merveilles-de-pecheur": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/04/04911326b25d5657e521e5735b21090b66775757.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/deef684d7ed"
+  },
+  "materiau-de-deuxieme-niveau-pour-hampe-doutil-des-merveilles-de-pecheur": "https://lds-img.finalfantasyxiv.com/itemicon/95/950bbda4ab71e868aa9b1dbfa665cf7cfbb267b4.png",
+  "materiau-de-deuxieme-niveau-pour-moulinet-doutil-des-merveilles-de-pecheur": "https://lds-img.finalfantasyxiv.com/itemicon/95/950bbda4ab71e868aa9b1dbfa665cf7cfbb267b4.png",
+  "materiau-de-troisieme-niveau-pour-hampe-doutil-des-merveilles-de-pecheur": "https://lds-img.finalfantasyxiv.com/itemicon/04/04911326b25d5657e521e5735b21090b66775757.png",
+  "materiau-de-troisieme-niveau-pour-moulinet-doutil-des-merveilles-de-pecheur": "https://lds-img.finalfantasyxiv.com/itemicon/34/348c682752ec2dc44cced4fe6d91ecd94fd50264.png",
+  "materiau-de-quatrieme-niveau-pour-moulinet-doutil-des-merveilles-de-pecheur": "https://lds-img.finalfantasyxiv.com/itemicon/50/50cba4420199b08e0b35a37f6402a46b61e4824a.png",
+  "materiau-de-sixieme-niveau-pour-outil-des-merveilles-de-pecheur": "https://lds-img.finalfantasyxiv.com/itemicon/5c/5c9c4a97fed8f75671eda6db40f3b5351076a4db.png"
 }
