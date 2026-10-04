@@ -59,10 +59,6 @@ bitume-de-dilettante.png,Bitume de dilettante,Connoisseur's Asphaltum,drop,Outil
 bloc-dalliage-additif-aspecte.png,Bloc d'alliage additif aspecté,Aspected Aetheroconductor,autre,Armes Fantômes
 bloc-de-colle-de-rroneek.png,Bloc de colle de rroneek,Rroneek Glue,autre,Armes Fantômes
 bloc-de-resine-synthetique-additive-aspectee.png,Bloc de résine synthétique additive aspectée,Aspected Aetherocatalyst,craft,Armes Fantômes
-boite-de-hampe-cristalline.png,Boîte de hampe cristalline,Crystalline Rod component,craft,Outils des Merveilles — Récolte
-boite-de-hampe-des-merveilles.png,Boîte de hampe des merveilles,Augmented Splendorous Rod component,recolte,Outils des Merveilles — Récolte
-boite-de-moulinet-cristallin.png,Boîte de moulinet cristallin,Crystalline Reel component,craft,Outils des Merveilles — Récolte
-boite-de-moulinet-des-merveilles.png,Boîte de moulinet des merveilles,Augmented Splendorous Reel component,recolte,Outils des Merveilles — Récolte
 bouilloire-en-laiton.png,Bouilloire en laiton,Brass Kettle,autre,Armes Zodiaque
 bouteille-delixir-de-dilettante.png,Bouteille d'élixir de dilettante,Connoisseur's Elixir Bottle,drop,Outils des Merveilles — Artisanat
 braise-daffinage.png,Braise d'affinage,Oddly Specific Striking Stone (hidden),autre,Outils de Cielacier — Récolte
@@ -95,13 +91,6 @@ cloison-verdoyante-de-dilettante.png,Cloison verdoyante de dilettante,Connoisseu
 clou-en-fer-daffinage-collectionnable.png,Clou en fer d'affinage (collectionnable),Skysteel refinement collectible (BSM) t1,craft,Outils de Cielacier — Artisanat
 clous-daffinage.png,Clous d'affinage,Oddly Specific Iron Sand,autre,Outils de Cielacier — Artisanat
 composant-additif-aspecte.png,Composant additif aspecté,Aspected Aether Agglomerate,craft,Armes Fantômes
-composant-de-canne-personnalise.png,Composant de canne personnalisé,Chora-Zoi's Crystalline Rod component,craft,Outils des Merveilles — Récolte
-composant-de-canne-splendide.png,Composant de canne splendide,Brilliant Rod component,craft,Outils des Merveilles — Récolte
-composant-de-canne-visionnaire.png,Composant de canne visionnaire,Vrandtic Visionary's Rod component,craft,Outils des Merveilles — Récolte
-composant-de-moulinet-personnalise.png,Composant de moulinet personnalisé,Chora-Zoi's Crystalline Reel component,craft,Outils des Merveilles — Récolte
-composant-de-moulinet-splendide.png,Composant de moulinet splendide,Brilliant Reel component,craft,Outils des Merveilles — Récolte
-composant-de-moulinet-visionnaire.png,Composant de moulinet visionnaire,Vrandtic Visionary's Reel component,craft,Outils des Merveilles — Récolte
-composant-doutil-de-guide.png,Composant d'outil de guide,Lodestar tool component,craft,Outils des Merveilles — Récolte
 coquillage-draconique.png,Coquillage draconique,Dragonspine,recolte,Outils de Cielacier — Récolte
 coquillage-mysterieux.png,Coquillage mystérieux,Unidentifiable Shell,recolte,Armes Anima
 cor-de-dilettante.png,Cor de dilettante,Connoisseur's Horn,drop,Outils des Merveilles — Artisanat
@@ -257,12 +246,23 @@ massette-splendide.png,Massette splendide,Brilliant Mallet,autre,Outils des Merv
 massette-superstellaire.png,Massette superstellaire,Lodestar Mallet,autre,Outils des Merveilles — Artisanat
 materia-iii.png,Matéria III,Materia III,autre,Armes Zodiaque
 materia-vi-75-successful-melds.png,Materia VI (75 successful melds),,autre,Armes Zodiaque
+materiau-de-cinquieme-niveau-pour-hampe-doutil-des-merveilles-de-pecheur.png,Matériau de cinquième niveau pour hampe d'outil des merveilles de pêcheur,Splendorous tool rod material (tier 5),autre,Outils des Merveilles — Récolte
+materiau-de-cinquieme-niveau-pour-moulinet-doutil-des-merveilles-de-pecheur.png,Matériau de cinquième niveau pour moulinet d'outil des merveilles de pêcheur,Splendorous tool reel material (tier 5),autre,Outils des Merveilles — Récolte
+materiau-de-deuxieme-niveau-pour-hampe-doutil-des-merveilles-de-pecheur.png,Matériau de deuxième niveau pour hampe d'outil des merveilles de pêcheur,Splendorous tool rod material (tier 2),autre,Outils des Merveilles — Récolte
+materiau-de-deuxieme-niveau-pour-moulinet-doutil-des-merveilles-de-pecheur.png,Matériau de deuxième niveau pour moulinet d'outil des merveilles de pêcheur,Splendorous tool reel material (tier 2),autre,Outils des Merveilles — Récolte
+materiau-de-premier-niveau-pour-hampe-doutil-des-merveilles-de-pecheur.png,Matériau de premier niveau pour hampe d'outil des merveilles de pêcheur,Splendorous tool rod material (tier 1),autre,Outils des Merveilles — Récolte
+materiau-de-premier-niveau-pour-moulinet-doutil-des-merveilles-de-pecheur.png,Matériau de premier niveau pour moulinet d'outil des merveilles de pêcheur,Splendorous tool reel material (tier 1),autre,Outils des Merveilles — Récolte
+materiau-de-quatrieme-niveau-pour-hampe-doutil-des-merveilles-de-pecheur.png,Matériau de quatrième niveau pour hampe d'outil des merveilles de pêcheur,Splendorous tool rod material (tier 4),autre,Outils des Merveilles — Récolte
+materiau-de-quatrieme-niveau-pour-moulinet-doutil-des-merveilles-de-pecheur.png,Matériau de quatrième niveau pour moulinet d'outil des merveilles de pêcheur,Splendorous tool reel material (tier 4),autre,Outils des Merveilles — Récolte
+materiau-de-sixieme-niveau-pour-hampe-doutil-des-merveilles-de-pecheur.png,Matériau de sixième niveau pour hampe d'outil des merveilles de pêcheur,Splendorous tool rod material (tier 6),autre,Outils des Merveilles — Récolte
+materiau-de-sixieme-niveau-pour-moulinet-doutil-des-merveilles-de-pecheur.png,Matériau de sixième niveau pour moulinet d'outil des merveilles de pêcheur,Splendorous tool reel material (tier 6),autre,Outils des Merveilles — Récolte
+materiau-de-troisieme-niveau-pour-hampe-doutil-des-merveilles-de-pecheur.png,Matériau de troisième niveau pour hampe d'outil des merveilles de pêcheur,Splendorous tool rod material (tier 3),autre,Outils des Merveilles — Récolte
+materiau-de-troisieme-niveau-pour-moulinet-doutil-des-merveilles-de-pecheur.png,Matériau de troisième niveau pour moulinet d'outil des merveilles de pêcheur,Splendorous tool reel material (tier 3),autre,Outils des Merveilles — Récolte
 materiaux-de-premier-niveau-menuisier.png,Matériaux de premier niveau (Menuisier),Splendorous tool component (CRP) t1,autre,Outils des Merveilles — Artisanat
 materiaux-de-premier-niveau-mineur.png,Matériaux de premier niveau (Mineur),Connoisseur's Prismstone,autre,Outils des Merveilles — Récolte
 matiere-sombre-daffinage.png,Matière sombre d'affinage,Oddly Specific Dark Matter,autre,Outils de Cielacier — Récolte
-memoquartz-allagois-heliologique.png,Mémoquartz allagois héliologique (total),Allagan Tomestones of Mathematics (total),devise,Armes Fantômes
+memoquartz-allagois-mathematique.png,Mémoquartz allagois mathématique (total),Allagan Tomestones of Mathematics (total),devise,Armes Fantômes
 memoquartz-deterministe.png,Mémoquartz déterministe (total),Tomestone of Causality (total),devise,Armes des Manderville
-memoquartz-mathematiques.png,Mémoquartz mathématiques (total),Allagan Tomestones of Mathematics (total),devise,Armes Fantômes
 menthe-eclair-de-dilettante.png,Menthe éclair de dilettante,Connoisseur's Levin Mint,drop,Outils des Merveilles — Récolte
 meteorite-rarissime.png,Météorite rarissime,Manderium Meteorite,autre,Armes des Manderville
 minerai-ancien-daffinage.png,Minerai ancien d'affinage,Oddly Specific Primordial Ore,craft,Outils de Cielacier — Récolte
