@@ -1,6 +1,5 @@
 {
-  "_comment": "Deux formats possibles par ligne. (1) Chaine simple = icone seule : soit une URL officielle Lodestone (meta og:image de la page de l'objet), soit un numero de fichier local dans icons/. (2) Objet {icon, link} = icone ET info-bulle officielle Fan Kit Tooltip au survol (link = URL de la page Lodestone de l'objet, ex: https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/XXXXXXXXXXX). Les slugs sont dans la colonne 'Nom de fichier attendu' de icones-a-fournir.csv (sans le .png). Tant qu'un objet n'a pas de ligne, l'icone generique par categorie reste affichee.",
-
+  "_comment": "Deux formats possibles par ligne. (1) Chaine simple = icone seule. (2) Objet {icon, link} = icone ET info-bulle officielle Fan Kit Tooltip au survol. Les slugs sont dans la colonne 'Nom de fichier attendu' de icones-a-fournir.csv (sans le .png).",
   "marteau-a-panne-croisee-superstellaire": {
     "icon": "https://lds-img.finalfantasyxiv.com/itemicon/6b/6b4d2cd7fb7056e8b19003935875f548a748d110.png",
     "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/d55d1338b13"
@@ -8,5 +7,942 @@
   "atma-du-sagittaire": {
     "icon": "https://lds-img.finalfantasyxiv.com/itemicon/d2/d2de9785220ab36fb3cf438ae4de5633017e56e8.png",
     "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/c2e76099a41"
+  },
+  "achondrite-rarissime": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21210.png"
+  },
+  "agregat-de-foudre-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20017.png"
+  },
+  "agregat-de-vent-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20016.png"
+  },
+  "agregat-obscur": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21230.png"
+  },
+  "agregat-resonnant": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20027.png"
+  },
+  "aiguille-cristaline": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35549.png"
+  },
+  "aiguille-cristaline-de-chora-zoi": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39502.png"
+  },
+  "aiguille-des-merveilles": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35544.png"
+  },
+  "aiguille-des-merveilles-amelioree": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35544.png"
+  },
+  "aiguille-norvrandtesque": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39504.png"
+  },
+  "aiguille-splendide": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39503.png"
+  },
+  "aiguille-superstellaire": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39504.png"
+  },
+  "alambic-cristalin": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35648.png"
+  },
+  "alambic-cristalin-de-chora-zoi": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39601.png"
+  },
+  "alambic-des-merveilles": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35645.png"
+  },
+  "alambic-des-merveilles-ameliore": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35645.png"
+  },
+  "alambic-norvrandtesque": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39603.png"
+  },
+  "alambic-splendide": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39602.png"
+  },
+  "alambic-superstellaire": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39603.png"
+  },
+  "alexandrite": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21290.png"
+  },
+  "alunite": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21221.png"
+  },
+  "amas-memoriel-de-grievete": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20019.png"
+  },
+  "amas-memoriel-de-menace": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20017.png"
+  },
+  "amas-memoriel-de-peine": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20039.png"
+  },
+  "amas-memoriel-de-repugnance": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20020.png"
+  },
+  "amas-memoriel-de-rudesse": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20025.png"
+  },
+  "amas-memoriel-de-sauvagerie": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20041.png"
+  },
+  "amas-memoriel-de-terreur": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20040.png"
+  },
+  "amas-memoriel-de-tourment": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20038.png"
+  },
+  "amas-memoriel-dexecration": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20042.png"
+  },
+  "ambre-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21270.png"
+  },
+  "apkallu-buveur-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/53004.png"
+  },
+  "aquarium-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/53190.png"
+  },
+  "argile-ombrale": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20406.png"
+  },
+  "astroscope-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52476.png"
+  },
+  "atma-de-la-balance": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26031.png"
+  },
+  "atma-de-la-vierge": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26030.png"
+  },
+  "atma-des-poissons": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26036.png"
+  },
+  "atma-du-cancer": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26028.png"
+  },
+  "atma-du-scorpion": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26032.png"
+  },
+  "baghnakhs-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/31179.png"
+  },
+  "bague-du-feu": {
+    "icon": "https://www.garlandtools.org/files/icons/item/54407.png"
+  },
+  "banc-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52654.png"
+  },
+  "bibliotheque-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52417.png"
+  },
+  "bille-de-bois-petrifie-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22413.png"
+  },
+  "bitume-ancien-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22685.png"
+  },
+  "bitume-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22685.png"
+  },
+  "bloc-dalliage-additif-aspecte": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26124.png"
+  },
+  "bloc-de-colle-de-rroneek": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22607.png"
+  },
+  "bloc-de-resine-synthetique-additive-aspectee": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26126.png"
+  },
+  "bouilloire-en-laiton": {
+    "icon": "https://www.garlandtools.org/files/icons/item/27601.png"
+  },
+  "bouteille-delixir-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/53160.png"
+  },
+  "braise-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/25911.png"
+  },
+  "braises-de-penthesilee": {
+    "icon": "https://www.garlandtools.org/files/icons/item/25911.png"
+  },
+  "brioche-des-rois": {
+    "icon": "https://www.garlandtools.org/files/icons/item/24057.png"
+  },
+  "buches-parfaites": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52113.png"
+  },
+  "cadene-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20903.png"
+  },
+  "cadre-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/51350.png"
+  },
+  "cafetiere-a-siphon-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/53336.png"
+  },
+  "canape-en-cuir-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52659.png"
+  },
+  "canne-a-peche-cristaline": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38502.png"
+  },
+  "canne-a-peche-cristaline-de-chora-zoi": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38505.png"
+  },
+  "canne-a-peche-des-merveilles": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38248.png"
+  },
+  "canne-a-peche-des-merveilles-amelioree": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38248.png"
+  },
+  "canne-a-peche-norvrandtesque": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38507.png"
+  },
+  "canne-a-peche-splendide": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38506.png"
+  },
+  "canne-a-peche-superstellaire": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38507.png"
+  },
+  "cantonniere-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/51443.png"
+  },
+  "chaise-en-bois-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52661.png"
+  },
+  "chapeau-pointu-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/41382.png"
+  },
+  "chasseur-allagois": {
+    "icon": "https://www.garlandtools.org/files/icons/item/29462.png"
+  },
+  "chaussures-universitaires-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/49483.png"
+  },
+  "chili-de-crabe-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/24328.png"
+  },
+  "chondrite-rarissime": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21243.png"
+  },
+  "chroniques-de-batailles-i": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26155.png"
+  },
+  "chroniques-de-batailles-ii": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26156.png"
+  },
+  "cloison-verdoyante-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52517.png"
+  },
+  "clous-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21204.png"
+  },
+  "composant-additif-aspecte": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26125.png"
+  },
+  "coquillage-draconique": {
+    "icon": "https://www.garlandtools.org/files/icons/item/29107.png"
+  },
+  "coquillage-mysterieux": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22263.png"
+  },
+  "cor-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52509.png"
+  },
+  "corail-sapient": {
+    "icon": "https://www.garlandtools.org/files/icons/item/29061.png"
+  },
+  "couteau-arrondi-cristalin": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39402.png"
+  },
+  "couteau-arrondi-cristalin-de-chora-zoi": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39402.png"
+  },
+  "couteau-arrondi-norvrandtesque": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39404.png"
+  },
+  "couteau-arrondi-splendide": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39403.png"
+  },
+  "couteau-arrondi-superstellaire": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39404.png"
+  },
+  "couteau-des-merveilles": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35445.png"
+  },
+  "couteau-des-merveilles-ameliore": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35445.png"
+  },
+  "cristal-astral": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26052.png"
+  },
+  "cristal-dairain": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20020.png"
+  },
+  "cristal-de-feu-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20007.png"
+  },
+  "cristal-de-foudre-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20011.png"
+  },
+  "cristal-de-glace-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20009.png"
+  },
+  "cristal-du-volcan-emotionnel": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20027.png"
+  },
+  "cristal-hydatos": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20037.png"
+  },
+  "cristal-instable": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20029.png"
+  },
+  "cristal-instable-de-glace": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20031.png"
+  },
+  "cristal-iridescent-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21232.png"
+  },
+  "cristal-ombral": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26053.png"
+  },
+  "cristal-pagos": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20030.png"
+  },
+  "cristal-pyros": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20032.png"
+  },
+  "cristallite-cosmique": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21228.png"
+  },
+  "cuir-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21810.png"
+  },
+  "dissipateur-spirituel-alpha": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26229.png"
+  },
+  "dissipateur-spirituel-beta": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26231.png"
+  },
+  "dissipateur-spirituel-gamma": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26230.png"
+  },
+  "eau-de-montagne-sacree": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22614.png"
+  },
+  "ecaille-de-dragon-de-cristal": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22265.png"
+  },
+  "ecailles-ombrales-de-thavnair": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22650.png"
+  },
+  "eclat-de-terre-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20006.png"
+  },
+  "eclat-deau-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20002.png"
+  },
+  "eclat-dobsidienne-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21452.png"
+  },
+  "ecorce-dacacia-durcie-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22418.png"
+  },
+  "encre-enchantee-ancienne": {
+    "icon": "https://www.garlandtools.org/files/icons/item/25920.png"
+  },
+  "encre-enchantee-de-haute-qualite": {
+    "icon": "https://www.garlandtools.org/files/icons/item/25923.png"
+  },
+  "escuchon-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/30086.png"
+  },
+  "etoffe-antique-parfaite": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21612.png"
+  },
+  "fauteuil-gros-minou-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52650.png"
+  },
+  "femur-sale-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22202.png"
+  },
+  "ficelle-inusable": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22030.png"
+  },
+  "fil-de-fer-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21203.png"
+  },
+  "fil-de-soie-du-clair-de-lune-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21801.png"
+  },
+  "fixateur-parfait": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22649.png"
+  },
+  "fleche-amulette": {
+    "icon": "https://www.garlandtools.org/files/icons/item/27209.png"
+  },
+  "fleur-de-prunier": {
+    "icon": "https://www.garlandtools.org/files/icons/item/29419.png"
+  },
+  "fontaine-en-marbre-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52741.png"
+  },
+  "fragment-de-fer-meteorique-dutohmu": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21202.png"
+  },
+  "fragment-de-matiere-sombre-artificielle": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21465.png"
+  },
+  "fragment-deureka-bonus-physeos": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26544.png"
+  },
+  "fragment-dos-mysterieux": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22216.png"
+  },
+  "francisque-en-adamantium": {
+    "icon": "https://www.garlandtools.org/files/icons/item/30383.png"
+  },
+  "gateau-de-crabe-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/24329.png"
+  },
+  "gemme-brute-mysterieuse": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21478.png"
+  },
+  "glace-de-louhi": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21266.png"
+  },
+  "glaives-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/36235.png"
+  },
+  "graines-mysterieuses": {
+    "icon": "https://www.garlandtools.org/files/icons/item/27459.png"
+  },
+  "hachette-cristaline": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38149.png"
+  },
+  "hachette-cristaline-de-chora-zoi": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38402.png"
+  },
+  "hachette-des-merveilles": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38144.png"
+  },
+  "hachette-des-merveilles-amelioree": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38144.png"
+  },
+  "hachette-norvrandtesque": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38404.png"
+  },
+  "hachette-splendide": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38403.png"
+  },
+  "hachette-superstellaire": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38404.png"
+  },
+  "hampe-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/23101.png"
+  },
+  "hampe-miniature": {
+    "icon": "https://www.garlandtools.org/files/icons/item/23107.png"
+  },
+  "huile-de-camelia": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22671.png"
+  },
+  "huile-de-trempe-de-radz-at-han": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22636.png"
+  },
+  "huile-isolante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/27617.png"
+  },
+  "jade-brut-daffinage-final": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21252.png"
+  },
+  "jaque-en-cuir-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/42575.png"
+  },
+  "joyau-rare-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26534.png"
+  },
+  "lame-de-samourai-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/36516.png"
+  },
+  "lanterne-murale-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/51333.png"
+  },
+  "latex-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22675.png"
+  },
+  "lingot-dalliage-atypique": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21020.png"
+  },
+  "lunulite": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21209.png"
+  },
+  "lustre-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/51124.png"
+  },
+  "lymphe-de-thavnair": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20661.png"
+  },
+  "marimba-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52729.png"
+  },
+  "marteau-a-panne-croisee-cristalin": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35149.png"
+  },
+  "marteau-a-panne-croisee-cristalin-de-chora-zoi": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39102.png"
+  },
+  "marteau-a-panne-croisee-des-merveilles": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35145.png"
+  },
+  "marteau-a-panne-croisee-des-merveilles-ameliore": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35145.png"
+  },
+  "marteau-a-panne-croisee-norvrandtesque": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39104.png"
+  },
+  "marteau-a-panne-croisee-splendide": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39103.png"
+  },
+  "marteau-de-batteur-cristalin": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35249.png"
+  },
+  "marteau-de-batteur-cristalin-de-chora-zoi": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39202.png"
+  },
+  "marteau-de-batteur-des-merveilles": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35245.png"
+  },
+  "marteau-de-batteur-des-merveilles-ameliore": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35245.png"
+  },
+  "marteau-de-batteur-norvrandtesque": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39204.png"
+  },
+  "marteau-de-batteur-splendide": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39203.png"
+  },
+  "marteau-de-batteur-superstellaire": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39204.png"
+  },
+  "massette-cristaline": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35348.png"
+  },
+  "massette-cristaline-de-chora-zoi": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39301.png"
+  },
+  "massette-des-merveilles": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35344.png"
+  },
+  "massette-des-merveilles-amelioree": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35344.png"
+  },
+  "massette-norvrandtesque": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39303.png"
+  },
+  "massette-splendide": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39302.png"
+  },
+  "massette-superstellaire": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39303.png"
+  },
+  "materia-iii": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20215.png"
+  },
+  "matiere-sombre-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20407.png"
+  },
+  "menthe-eclair-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/25039.png"
+  },
+  "meteorite-rarissime": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21225.png"
+  },
+  "minerai-ancien-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21225.png"
+  },
+  "minerai-dadamant-daffinage-final-collectionnable": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21224.png"
+  },
+  "minerai-daurum-regis-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21225.png"
+  },
+  "miroir-cosmetique-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/53327.png"
+  },
+  "miroir-en-alliage-de-titane": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20952.png"
+  },
+  "morimog": {
+    "icon": "https://www.garlandtools.org/files/icons/item/29406.png"
+  },
+  "mortier-parfait": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35652.png"
+  },
+  "noyau-de-grand-monstre-explosif": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21261.png"
+  },
+  "oeil-de-paon-rouge-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21468.png"
+  },
+  "ombralite": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21221.png"
+  },
+  "palissade-en-bambou-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52346.png"
+  },
+  "parasol-de-jardin-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52125.png"
+  },
+  "parchemin-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26180.png"
+  },
+  "parchemin-parfait": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26180.png"
+  },
+  "parchemin-stellaire": {
+    "icon": "https://www.garlandtools.org/files/icons/item/25934.png"
+  },
+  "pate-de-cristal": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21494.png"
+  },
+  "patte-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21013.png"
+  },
+  "perle-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21324.png"
+  },
+  "philtre-chimerique-de-vitalite-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20707.png"
+  },
+  "pierre-a-aiguiser-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21472.png"
+  },
+  "pierre-a-aiguiser-opaline": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21485.png"
+  },
+  "pilon-parfait": {
+    "icon": "https://www.garlandtools.org/files/icons/item/23001.png"
+  },
+  "pioche-cristaline": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38301.png"
+  },
+  "pioche-cristaline-de-chora-zoi": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38304.png"
+  },
+  "pioche-des-merveilles": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38046.png"
+  },
+  "pioche-des-merveilles-amelioree": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38046.png"
+  },
+  "pioche-norvrandtesque": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38306.png"
+  },
+  "pioche-splendide": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38305.png"
+  },
+  "pioche-superstellaire": {
+    "icon": "https://www.garlandtools.org/files/icons/item/38306.png"
+  },
+  "plaque-de-verre-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22651.png"
+  },
+  "plume-daffinage-final-collectionnable": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21903.png"
+  },
+  "plume-de-pazuzu": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21910.png"
+  },
+  "poele-a-frire-cristaline": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39701.png"
+  },
+  "poele-a-frire-cristaline-de-chora-zoi": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39704.png"
+  },
+  "poele-a-frire-des-merveilles": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35746.png"
+  },
+  "poele-a-frire-des-merveilles-amelioree": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35746.png"
+  },
+  "poele-a-frire-norvrandtesque": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39706.png"
+  },
+  "poele-a-frire-splendide": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39705.png"
+  },
+  "poele-a-frire-superstellaire": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39706.png"
+  },
+  "poisson-follet": {
+    "icon": "https://www.garlandtools.org/files/icons/item/29450.png"
+  },
+  "porte-ornee-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/50103.png"
+  },
+  "poudre-de-graines-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/25947.png"
+  },
+  "poudre-minerale-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21234.png"
+  },
+  "reliques-abandonnees": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26597.png"
+  },
+  "resine-allagoise": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22638.png"
+  },
+  "resine-synthetique-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21460.png"
+  },
+  "ressort-miniature": {
+    "icon": "https://www.garlandtools.org/files/icons/item/20920.png"
+  },
+  "reveil-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/53438.png"
+  },
+  "roche-ombrale-dure": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21228.png"
+  },
+  "rondin-de-bois-ancien-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22423.png"
+  },
+  "rondin-de-bouleau-daffinage-final": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22421.png"
+  },
+  "rondin-de-chataignier-sombre-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22420.png"
+  },
+  "sable-de-cristal": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21229.png"
+  },
+  "sable-de-halonite": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21204.png"
+  },
+  "sable-fossilise-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21236.png"
+  },
+  "sandwich-baguette-au-calmar-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/24043.png"
+  },
+  "schorl-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21476.png"
+  },
+  "scie-cristaline": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39000.png"
+  },
+  "scie-cristaline-de-chora-zoi": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39003.png"
+  },
+  "scie-des-merveilles": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35045.png"
+  },
+  "scie-des-merveilles-amelioree": {
+    "icon": "https://www.garlandtools.org/files/icons/item/35045.png"
+  },
+  "scie-norvrandtesque": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39005.png"
+  },
+  "scie-splendide": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39004.png"
+  },
+  "scie-superstellaire": {
+    "icon": "https://www.garlandtools.org/files/icons/item/39005.png"
+  },
+  "seve-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/25354.png"
+  },
+  "shishi-odoshi-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52219.png"
+  },
+  "sonnette-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52513.png"
+  },
+  "spaghetti-al-nero-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/24027.png"
+  },
+  "tapis-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52002.png"
+  },
+  "tapis-rouge-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52029.png"
+  },
+  "targe-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/30008.png"
+  },
+  "tarte-a-languille-tres-speciale": {
+    "icon": "https://www.garlandtools.org/files/icons/item/24305.png"
+  },
+  "tarte-aux-fraises-pixies-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/24078.png"
+  },
+  "the-a-la-fraise-pixie-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/24415.png"
+  },
+  "topiaire-de-mog-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52195.png"
+  },
+  "trompette-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/53339.png"
+  },
+  "valise-a-maquillage-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/53343.png"
+  },
+  "vasque-sur-pied-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/52651.png"
+  },
+  "velours-daffinage": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21621.png"
+  },
+  "veste-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/42869.png"
+  },
+  "voile-lunaire-de-dilettante": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22613.png"
+  },
+  "atma-des-gemeaux": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26027.png"
+  },
+  "atma-du-belier": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26025.png"
+  },
+  "atma-du-capricorne": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26034.png"
+  },
+  "atma-du-lion": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26029.png"
+  },
+  "atma-du-taureau": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26026.png"
+  },
+  "atma-du-verseau": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26035.png"
+  },
+  "demi-atma-ambre": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26029.png"
+  },
+  "demi-atma-amethyste": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26027.png"
+  },
+  "demi-atma-corail": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26026.png"
+  },
+  "demi-atma-emeraude": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26034.png"
+  },
+  "demi-atma-saphir": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26025.png"
+  },
+  "demi-atma-turquoise": {
+    "icon": "https://www.garlandtools.org/files/icons/item/26035.png"
+  },
+  "materia-vi-75-successful-melds": "https://lds-img.finalfantasyxiv.com/itemicon/68/68ef53ea51719bdc0c2fb1101d0a273a467e7c27.png",
+  "arme-hq-de-classe-curtana-sphairai": "https://lds-img.finalfantasyxiv.com/itemicon/e2/e266c4628194581a07b76857c9cd6d38a7125ba8.png",
+  "livre-de-la-terre-celeste-i": "https://www.garlandtools.org/files/icons/item/t/65122.png",
+  "livre-de-leau-celeste-i": "https://www.garlandtools.org/files/icons/item/t/65122.png",
+  "livre-de-leau-celeste-ii": "https://www.garlandtools.org/files/icons/item/t/65122.png",
+  "livre-de-leau-infernale-i": "https://www.garlandtools.org/files/icons/item/t/65122.png",
+  "livre-du-feu-celeste-i": "https://www.garlandtools.org/files/icons/item/t/65122.png",
+  "livre-du-feu-celeste-ii": "https://www.garlandtools.org/files/icons/item/t/65122.png",
+  "livre-du-feu-infernal-i": "https://www.garlandtools.org/files/icons/item/t/65122.png",
+  "livre-du-vent-celeste-i": "https://www.garlandtools.org/files/icons/item/t/65122.png",
+  "livre-du-vent-celeste-ii": "https://www.garlandtools.org/files/icons/item/t/65122.png",
+  "memoquartz-allagois-mathematique": "https://www.garlandtools.org/files/icons/item/t/65122.png",
+  "memoquartz-deterministe": "https://www.garlandtools.org/files/icons/item/t/65094.png",
+  "morceau-decliptite": "https://www.garlandtools.org/files/icons/item/21212.png",
+  "anneaux-en-mithril-daffinage-collectionnable": "https://lds-img.finalfantasyxiv.com/itemicon/f3/f369bf983ac3ec0dbf2e0b0edd2175dad53e152f.png",
+  "madrier-de-cedre-daffinage-collectionnable": "https://ffxiv.consolegameswiki.com/mediawiki/images/2/2f/Oddly_specific_cedar_lumber_icon1.png",
+  "etoffe-daffinage-collectionnable": "https://ffxiv.consolegameswiki.com/mediawiki/images/f/fd/Oddly_specific_cloth_icon1.png",
+  "celestine-daffinage-final-collectionnable": "https://lds-img.finalfantasyxiv.com/itemicon/41/41137258c7aa7db153eefa93971f65995c8a7b99.png",
+  "eau-sacree-daffinage-final-collectionnable": "https://lds-img.finalfantasyxiv.com/itemicon/34/34748af1938f03b77793531515e08b81e0e746e7.png",
+  "etoffe-de-coutil-indigo-daffinage-final-collectionnable": "https://lds-img.finalfantasyxiv.com/itemicon/56/56e2a432c5bdb53c6ef3e105f04e3d9ba81a2a16.png",
+  "lingot-dargent-daffinage-collectionnable": "https://lds-img.finalfantasyxiv.com/itemicon/53/53c63244363f215bc34350c28903bd42f747c29b.png",
+  "pepite-dargent-daffinage-collectionnable": "https://lds-img.finalfantasyxiv.com/itemicon/9d/9d7e21d5ffd7bc85ce785a3a43373f7a956c8212.png",
+  "caoutchouc-daffinage-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/64/640c29e6a99a89b3e4434622e4d4b6fd9ed30ea3.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/22ac706beca"
+  },
+  "clou-en-fer-daffinage-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/4b/4b9e1690f35aba0a82915446f6fdfc53af85af69.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/7ce7b009aec"
+  },
+  "cuir-de-gagana-daffinage-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/15/15fe796d1c5389e1ac0aaa0267952b26086d68cc.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/ebb799c0dd5"
+  },
+  "cuir-de-gazelle-daffinage-final-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/37/37c17d6b48c0463a76f14ba430d83db32683ae6b.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/17458cbe433"
+  },
+  "etoffe-de-laine-daffinage-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/46/46a0deaa2a1ada90b2b2cc6eac5e24812ecf8cd9.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/74a556529a9"
+  },
+  "glu-daffinage-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/20/200b68c4b3ef0ea70bedffa3539a98430e56af68.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/ef240d47779"
+  },
+  "huile-daffinage-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/5d/5dad238b6dbe52142fb5f6d5b4cab27483f946b5.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/190f0146ed3"
+  },
+  "huile-de-requin-daffinage-final-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/48/4848892669087a129fa937289c94576fd8397904.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/22ea29b4468"
+  },
+  "lingot-de-fer-daffinage-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/d9/d9ea63eda4b3112dc71638b19e73db8cf5bf881d.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/91212f8ea58"
+  },
+  "madrier-de-pin-daffinage-final-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/f0/f0f1b0e6e2926f300dcfa9e3d5935adf2ea60f94.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/53e6e58b175"
+  },
+  "pate-daffinage-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/dc/dc7ac8a9786656291226d51aa3e22242af3aff1e.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/1bce4e90c49"
+  },
+  "plaquette-de-tungstene-daffinage-final-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/19/191d5f9cd852d62a5f53537a6e59794383819f94.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/fa97d2c289e"
+  },
+  "laniere-en-cuir-de-gagana-daffinage-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/9a/9a23de13d718e9bbd605f95925c2d5179f6f2415.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/ec7281b8a02"
+  },
+  "pignon-argente-daffinage-final-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/6b/6b1cb9c6c42ccb613a6393a678838d726bf5173b.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/6dccc36e631"
+  },
+  "planche-de-cedre-daffinage-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/16/166bd519ab8dd0707566237f04e804532ee96648.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/606ae58ac1d"
+  },
+  "plaque-de-mithril-daffinage-collectionnable": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/02/02e115e5f9e5ada086cb638847d76999890daa36.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/7f927c01620"
+  },
+  "sable-ethereen-tellurique-daffinage": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/84/8400364e9435a3440cd74d99db94a687c1f57c2a.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/57759939f68"
+  },
+  "sable-ethereen-vegetal-daffinage": {
+    "icon": "https://lds-img.finalfantasyxiv.com/itemicon/77/77dbbd2327b8ef247fa7bf3210fe084fa212eae5.png",
+    "link": "https://fr.finalfantasyxiv.com/lodestone/playguide/db/item/8d4f71b0b28"
+  },
+  "materiau-de-premier-niveau-pour-outil-des-merveilles-de-mineur": {
+    "icon": "https://www.garlandtools.org/files/icons/item/21232.png"
+  },
+  "materiau-de-premier-niveau-pour-hampe-doutil-des-merveilles-de-pecheur": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22666.png"
+  },
+  "materiau-de-premier-niveau-pour-moulinet-doutil-des-merveilles-de-pecheur": {
+    "icon": "https://www.garlandtools.org/files/icons/item/22668.png"
   }
 }
